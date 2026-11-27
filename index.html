@@ -24,21 +24,21 @@ pre{margin:0;font:inherit;white-space:pre;overflow-x:auto}
 @keyframes breathe{50%{opacity:.3}}@keyframes flow{0%,100%{color:#2C8A4E;text-shadow:none}50%{color:#F4C430;text-shadow:0 0 8px #F4C430}}@keyframes wave{50%{transform:translateY(-5px)}}
 @keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}@keyframes spin{0%{content:'|'}25%{content:'/'}50%{content:'-'}75%{content:'\\'}}@keyframes cat{0%,88%{content:'=^.^='}89%,100%{content:'=^-^='}}
 @keyframes gl{0%,92%,100%{text-shadow:none;transform:none}93%{text-shadow:3px 0 #FF5FA2,-3px 0 #5FD8FF;transform:translateX(2px)}95%{text-shadow:-3px 0 #FF5FA2,3px 0 #5FD8FF;transform:translateX(-2px)}}
-.blk{margin:0 0 72px}.blk .cmd{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:0}.blk.on .cmd{animation:type calc(var(--n) * 55ms) steps(var(--n)) forwards}
-.blk .out{visibility:hidden;margin-top:14px}.blk.on .out{visibility:visible;animation:reveal .9s steps(14) both;animation-delay:calc(var(--n) * 55ms + .3s)}.blk.on .out.nr{animation:none}
-.st>*{opacity:0}.blk.on .st>*{animation:pop .45s ease forwards;animation-delay:calc(var(--n) * 55ms + .4s + var(--i,0) * 130ms)}
+.blk{margin:0 0 72px;--td:min(calc(var(--n) * 30ms),600ms);--stg:60ms}.blk .cmd{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:0}.blk.on .cmd{animation:type calc(var(--td)) steps(var(--n)) forwards}
+.blk .out{visibility:hidden;margin-top:14px}.blk.on .out{visibility:visible;animation:reveal .5s steps(10) both;animation-delay:calc(var(--td) + .12s)}.blk.on .out.nr{animation:none}
+.st>*{opacity:0}.blk.on .st>*{animation:pop .35s ease forwards;animation-delay:calc(var(--td) + .15s + var(--i,0) * var(--stg))}
 :is(.st,.wave)>:nth-child(2){--i:1}:is(.st,.wave)>:nth-child(3){--i:2}:is(.st,.wave)>:nth-child(4){--i:3}:is(.st,.wave)>:nth-child(5){--i:4}:is(.st,.wave)>:nth-child(6){--i:5}:is(.st,.wave)>:nth-child(7){--i:6}:is(.st,.wave)>:nth-child(8){--i:7}:is(.st,.wave)>:nth-child(9){--i:8}:is(.st,.wave)>:nth-child(10){--i:9}:is(.st,.wave)>:nth-child(11){--i:10}:is(.st,.wave)>:nth-child(12){--i:11}:is(.st,.wave)>:nth-child(13){--i:12}:is(.st,.wave)>:nth-child(14){--i:13}:is(.st,.wave)>:nth-child(15){--i:14}:is(.st,.wave)>:nth-child(16){--i:15}
-.cnt{counter-reset:c var(--c)}.cnt::after{content:counter(c)}.blk.on .cnt{animation:cnt 2.2s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--n) * 55ms + .8s)}
-.bar{display:inline-block;height:.72em;width:0;background:currentColor;vertical-align:-.04em}.blk.on .bar{animation:grow 1.2s ease-out forwards;animation-delay:calc(var(--n) * 55ms + .7s + var(--i,0) * 200ms)}.blk.on .bar.lv{animation:grow 1.2s ease-out calc(var(--n) * 55ms + .7s + var(--i,0) * 200ms) forwards,live 2.4s ease-in-out 3s infinite alternate}
+.cnt{counter-reset:c var(--c)}.cnt::after{content:counter(c)}.blk.on .cnt{animation:cnt 2.2s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--td) + .8s)}
+.bar{display:inline-block;height:.72em;width:0;background:currentColor;vertical-align:-.04em}.blk.on .bar{animation:grow 1.2s ease-out forwards;animation-delay:calc(var(--td) + .7s + var(--i,0) * 200ms)}.blk.on .bar.lv{animation:grow 1.2s ease-out calc(var(--td) + .7s + var(--i,0) * 200ms) forwards,live 2.4s ease-in-out 3s infinite alternate}
 .pulse{animation:breathe 1.6s ease-in-out infinite}.flow{animation:flow 1.8s linear infinite;animation-delay:var(--d,0s)}.wave>*{display:inline-block;animation:wave 2.4s ease-in-out infinite;animation-delay:calc(var(--i,0) * .12s)}
 .dots::after{content:'';animation:dots 1.4s steps(1) infinite}.spin::after{content:'|';animation:spin .8s steps(1) infinite}.cat::after{content:'=^.^=';animation:cat 4s steps(1) infinite}.gl{display:inline-block;animation:gl 6s steps(1) infinite}.hl:hover{background:#0B2A17}
 .cur{display:inline-block;width:.6em;height:1.1em;background:#4BE37A;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
 .bootout{animation:fade .6s ease forwards}
 @media (prefers-reduced-motion:reduce){*,*::after{animation:none!important}.blk .cmd{width:auto}.blk .out,.st>*{visibility:visible;opacity:1}.bar{width:var(--w)}.cnt{--c:var(--to)}}
-@media (max-width:700px){.wrap{font-size:13px!important}.blk{margin-bottom:56px}.blk.on .cmd{animation:none;width:auto;white-space:normal;overflow-wrap:anywhere}}
+@media (max-width:700px){.wrap{font-size:13px!important}.blk{margin-bottom:56px;--td:0ms;--stg:35ms}.blk.on .cmd{animation:none;width:auto;white-space:normal;overflow-wrap:anywhere}}
 </style>
 <style>
-.cm{color:#6FBF8C;opacity:0;white-space:pre}.blk.on .cm{animation:pop .4s ease forwards;animation-delay:calc(var(--n) * 55ms + .15s)}.blk.on.run>div:first-child{animation:flash 1s ease}
+.cm{color:#6FBF8C;opacity:0;white-space:pre}.blk.on .cm{animation:pop .4s ease forwards;animation-delay:calc(var(--td) + .1s)}.blk.on.run>div:first-child{animation:flash 1s ease}
 @keyframes flash{0%,60%{background:#0E3A20}100%{background:transparent}}@keyframes win{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
 #tree{position:fixed;z-index:15;top:52px;left:16px;width:230px;font-size:13px;line-height:1.75;color:#6FBF8C;display:none}#tree .tr-h{display:block;color:#EFFFF4;font-weight:600;margin-bottom:4px}
 .tl{display:block;width:100%;text-align:left;background:none;border:0;padding:0 6px;font:inherit;color:#9FFFC0;text-decoration:none;cursor:pointer;white-space:pre;border-radius:2px}.tl .tp{color:#2C8A4E}.tl:hover,.tl[aria-current=true]{background:#0E3A20;color:#EFFFF4}.tl.sub{color:#6FBF8C}.tl.sub:hover{color:#F4C430}
@@ -533,17 +533,19 @@ body>div>div:first-child{flex-wrap:nowrap!important;white-space:nowrap;overflow:
       this.boot(false);
       var t0 = performance.now(), fr = 0;
       var blocks = $$('[data-blk]', this.content);
+      this.petit = window.innerWidth < 700;
+      window.addEventListener('scroll', function () { blocks.forEach(function (el) { if (!el.classList.contains('on') && el.getBoundingClientRect().top < window.innerHeight * 1.05) el.classList.add('on'); }); }, { passive: true });
       var liens = $$('#tree a.tl');
       var loop = function (now) {
         requestAnimationFrame(loop); fr++;
         var t = (now - t0) / 1000;
         if (self.phase === 'splash') self.drawSplash(t);
         if (self.phase === 'done' || self.phase === 'out') {
-          self.drawFrance(t);
-          if (fr % 8 === 0) {
+          if (!(self.petit && fr % 2)) self.drawFrance(t);
+          if (fr % 3 === 0) {
             blocks.forEach(function (el) {
               if (el.classList.contains('on')) return;
-              if (el.getBoundingClientRect().top < window.innerHeight * 0.85) el.classList.add('on');
+              if (el.getBoundingClientRect().top < window.innerHeight * 1.05) el.classList.add('on');
             });
             var actif = null;
             liens.forEach(function (a) { var s = document.getElementById(a.getAttribute('href').slice(1)); if (s && s.getBoundingClientRect().top < window.innerHeight * 0.4) actif = a; });
