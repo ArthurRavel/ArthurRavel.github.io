@@ -1,423 +1,470 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Data Scientist</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ravel OS, le portfolio d'Arthur Ravel</title>
+<meta name="description" content="Arthur Ravel, développeur data et IA à Toulouse : PostGIS, machine learning, agents. Bienvenue sur Ravel OS.">
+<meta property="og:title" content="Ravel OS, le portfolio d'Arthur Ravel">
+<meta property="og:description" content="Arthur Ravel, développeur data et IA à Toulouse : PostGIS, machine learning, agents. Bienvenue sur Ravel OS.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#03140A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2303140A'/%3E%3Ctext x='4' y='23' font-family='monospace' font-size='18' font-weight='700' fill='%234BE37A'%3ER%3C/text%3E%3Crect x='17' y='20' width='9' height='3' fill='%234BE37A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#03140A}
+a{color:#5FD8FF}a:hover{color:#FF5FA2}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #4BE37A;outline-offset:3px}
+pre{margin:0;font:inherit;white-space:pre;overflow-x:auto}
+@property --c{syntax:'<integer>';inherits:false;initial-value:0}
+@keyframes type{to{width:calc(var(--n) * 1ch)}}@keyframes reveal{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}@keyframes blink{50%{opacity:0}}@keyframes fade{to{opacity:0;visibility:hidden}}
+@keyframes pop{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}@keyframes cnt{to{--c:var(--to)}}@keyframes grow{to{width:var(--w)}}@keyframes live{from{width:var(--w)}to{width:calc(var(--w) * .78)}}
+@keyframes breathe{50%{opacity:.3}}@keyframes flow{0%,100%{color:#2C8A4E;text-shadow:none}50%{color:#F4C430;text-shadow:0 0 8px #F4C430}}@keyframes wave{50%{transform:translateY(-5px)}}
+@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}@keyframes spin{0%{content:'|'}25%{content:'/'}50%{content:'-'}75%{content:'\\'}}@keyframes cat{0%,88%{content:'=^.^='}89%,100%{content:'=^-^='}}
+@keyframes gl{0%,92%,100%{text-shadow:none;transform:none}93%{text-shadow:3px 0 #FF5FA2,-3px 0 #5FD8FF;transform:translateX(2px)}95%{text-shadow:-3px 0 #FF5FA2,3px 0 #5FD8FF;transform:translateX(-2px)}}
+.blk{margin:0 0 72px}.blk .cmd{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:0}.blk.on .cmd{animation:type calc(var(--n) * 55ms) steps(var(--n)) forwards}
+.blk .out{visibility:hidden;margin-top:14px}.blk.on .out{visibility:visible;animation:reveal .9s steps(14) both;animation-delay:calc(var(--n) * 55ms + .3s)}.blk.on .out.nr{animation:none}
+.st>*{opacity:0}.blk.on .st>*{animation:pop .45s ease forwards;animation-delay:calc(var(--n) * 55ms + .4s + var(--i,0) * 130ms)}
+:is(.st,.wave)>:nth-child(2){--i:1}:is(.st,.wave)>:nth-child(3){--i:2}:is(.st,.wave)>:nth-child(4){--i:3}:is(.st,.wave)>:nth-child(5){--i:4}:is(.st,.wave)>:nth-child(6){--i:5}:is(.st,.wave)>:nth-child(7){--i:6}:is(.st,.wave)>:nth-child(8){--i:7}:is(.st,.wave)>:nth-child(9){--i:8}:is(.st,.wave)>:nth-child(10){--i:9}:is(.st,.wave)>:nth-child(11){--i:10}:is(.st,.wave)>:nth-child(12){--i:11}:is(.st,.wave)>:nth-child(13){--i:12}:is(.st,.wave)>:nth-child(14){--i:13}:is(.st,.wave)>:nth-child(15){--i:14}:is(.st,.wave)>:nth-child(16){--i:15}
+.cnt{counter-reset:c var(--c)}.cnt::after{content:counter(c)}.blk.on .cnt{animation:cnt 2.2s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--n) * 55ms + .8s)}
+.bar{display:inline-block;height:.72em;width:0;background:currentColor;vertical-align:-.04em}.blk.on .bar{animation:grow 1.2s ease-out forwards;animation-delay:calc(var(--n) * 55ms + .7s + var(--i,0) * 200ms)}.blk.on .bar.lv{animation:grow 1.2s ease-out calc(var(--n) * 55ms + .7s + var(--i,0) * 200ms) forwards,live 2.4s ease-in-out 3s infinite alternate}
+.pulse{animation:breathe 1.6s ease-in-out infinite}.flow{animation:flow 1.8s linear infinite;animation-delay:var(--d,0s)}.wave>*{display:inline-block;animation:wave 2.4s ease-in-out infinite;animation-delay:calc(var(--i,0) * .12s)}
+.dots::after{content:'';animation:dots 1.4s steps(1) infinite}.spin::after{content:'|';animation:spin .8s steps(1) infinite}.cat::after{content:'=^.^=';animation:cat 4s steps(1) infinite}.gl{display:inline-block;animation:gl 6s steps(1) infinite}.hl:hover{background:#0B2A17}
+.cur{display:inline-block;width:.6em;height:1.1em;background:#4BE37A;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+.bootout{animation:fade .6s ease forwards}
+@media (prefers-reduced-motion:reduce){*,*::after{animation:none!important}.blk .cmd{width:auto}.blk .out,.st>*{visibility:visible;opacity:1}.bar{width:var(--w)}.cnt{--c:var(--to)}}
+@media (max-width:700px){.wrap{font-size:13px!important}.blk{margin-bottom:56px}.blk.on .cmd{animation:none;width:auto;white-space:normal;overflow-wrap:anywhere}}
+</style>
+<noscript><style>#boot{display:none!important}.blk .cmd{width:auto}.blk .out,.st>*{visibility:visible;opacity:1}.bar{width:var(--w)}</style></noscript>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">DS</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">À propos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Compétences</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#education" class="nav-link">Formations</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+<div style="position:relative;min-height:100vh;background:#03140A;color:#9FFFC0;font-family:'IBM Plex Mono',monospace">
 
-    <!-- Particle Background -->
-    <div class="particles-container">
-        <canvas id="particles-canvas"></canvas>
-    </div>
+<div style="position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;padding:8px clamp(14px,3vw,32px);background:#4BE37A;color:#03140A;font-size:13px;font-weight:600">
+<span>Ravel OS 1.0</span><span>visiteur@ravel-os : ~</span><span id="clock"></span>
+</div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    Bonjour, je suis
-                    <span class="gradient-text">Data Scientist</span>
-                </h1>
-                <p class="hero-description">
-                    <span class="typing-text"></span>
-                </p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-primary">Découvrir mon profil</a>
-                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="data-visualization">
-                    <div class="floating-element" style="--delay: 0s">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="floating-element" style="--delay: 0.5s">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="floating-element" style="--delay: 1s">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="floating-element" style="--delay: 1.5s">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
+<div class="wrap" id="content" style="max-width:1060px;margin:0 auto;padding:56px clamp(14px,3vw,32px) 120px;font-size:15px;line-height:1.65">
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">À propos de moi</h2>
-                <p class="section-subtitle">Passionné par l'analyse de données et l'intelligence artificielle</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-intro">
-                        Data Scientist expérimenté avec une passion pour l'extraction d'insights significatifs 
-                        à partir de données complexes. Je transforme les données en solutions business concrètes 
-                        grâce à des techniques avancées de machine learning et d'analyse statistique.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <div class="highlight-content">
-                                <h4>Innovation</h4>
-                                <p>Développement de solutions créatives pour des problèmes complexes</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="highlight-content">
-                                <h4>Collaboration</h4>
-                                <p>Travail en équipe multidisciplinaire et communication des résultats</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="highlight-content">
-                                <h4>Technique</h4>
-                                <p>Maîtrise des outils et technologies de pointe en data science</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="50">0</div>
-                        <div class="stat-label">Projets réalisés</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="5">0</div>
-                        <div class="stat-label">Années d'expérience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="15">0</div>
-                        <div class="stat-label">Technologies maîtrisées</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="blk on" data-blk="0" style="--n:0">
+<pre style="color:#4BE37A;font-size:clamp(7px,1.25vw,13px);line-height:1.15;font-weight:600"> ____      ___     _______ _        ___  ____  
+|  _ \    / \ \   / / ____| |      / _ \/ ___| 
+| |_) |  / _ \ \ / /|  _| | |     | | | \___ \ 
+|  _ &lt;  / ___ \ V / | |___| |___  | |_| |___) |
+|_| \_\/_/   \_\_/  |_____|_____|  \___/|____/ </pre>
+<p style="margin:22px 0 6px;color:#D8FFE6">Bienvenue sur Ravel OS 1.0, le système d'exploitation personnel d'Arthur Ravel.</p>
+<p style="margin:0;color:#6FBF8C">Faites défiler pour exécuter la suite, ou tapez <span style="color:#F4C430">help</span> tout en bas.</p>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Compétences</h2>
-                <p class="section-subtitle">Expertise technique et outils de data science</p>
-            </div>
-            <div class="skills-content">
-                <div class="skills-categories">
-                    <div class="skill-category">
-                        <h3 class="category-title">Langages de Programmation</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Python</span>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">R</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">SQL</span>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">JavaScript</span>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3 class="category-title">Machine Learning & IA</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Scikit-learn</span>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">TensorFlow/Keras</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">PyTorch</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">NLP</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3 class="category-title">Outils & Plateformes</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Jupyter/Colab</span>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="95"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Docker</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">AWS/GCP</span>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Git/GitHub</span>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="blk" data-blk="1" style="--n:6">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">whoami</span></div>
+<div class="out" style="font-size:clamp(28px,5vw,56px);line-height:1.05;color:#EFFFF4;font-weight:600"><span class="gl">Arthur Ravel</span><span style="display:block;font-size:clamp(15px,1.6vw,19px);color:#9FFFC0;font-weight:400;margin-top:10px">développeur data et IA, Toulouse</span></div>
+</section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Formations</h2>
-                <p class="section-subtitle">Parcours académique et certifications</p>
-            </div>
-            <div class="education-content">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-period">2022 - 2023</div>
-                            <h3 class="timeline-title">Master en Data Science</h3>
-                            <h4 class="timeline-institution">École Polytechnique</h4>
-                            <p class="timeline-description">
-                                Spécialisation en Machine Learning avancé, Deep Learning et Big Data. 
-                                Projet de fin d'études sur l'analyse prédictive en santé publique.
-                            </p>
-                            <div class="timeline-skills">
-                                <span class="skill-tag">Machine Learning</span>
-                                <span class="skill-tag">Deep Learning</span>
-                                <span class="skill-tag">Big Data</span>
-                                <span class="skill-tag">Statistiques</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-period">2019 - 2022</div>
-                            <h3 class="timeline-title">Licence en Mathématiques Appliquées</h3>
-                            <h4 class="timeline-institution">Université Paris-Saclay</h4>
-                            <p class="timeline-description">
-                                Formation solide en mathématiques, statistiques et programmation. 
-                                Introduction aux méthodes quantitatives et à l'analyse de données.
-                            </p>
-                            <div class="timeline-skills">
-                                <span class="skill-tag">Mathématiques</span>
-                                <span class="skill-tag">Statistiques</span>
-                                <span class="skill-tag">Probabilités</span>
-                                <span class="skill-tag">Analyse numérique</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-period">2023</div>
-                            <h3 class="timeline-title">Certifications</h3>
-                            <h4 class="timeline-institution">Diverses plateformes</h4>
-                            <p class="timeline-description">
-                                Certifications complémentaires pour approfondir les compétences techniques 
-                                et rester à jour avec les dernières technologies.
-                            </p>
-                            <div class="timeline-skills">
-                                <span class="skill-tag">AWS ML Specialty</span>
-                                <span class="skill-tag">TensorFlow Developer</span>
-                                <span class="skill-tag">Azure Data Scientist</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="blk" data-blk="2" style="--n:8">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">neofetch</span></div>
+<div class="out" style="display:flex;flex-wrap:wrap;gap:20px 48px;align-items:flex-start">
+<div style="min-width:0">
+<div><span style="color:#F4C430;font-weight:600">visiteur</span>@<span style="color:#F4C430;font-weight:600">ravel-os</span></div>
+<div style="color:#2C8A4E">-----------------</div>
+<div><span style="color:#5FD8FF">OS</span> : Ravel OS 1.0, édition Toulouse</div>
+<div><span style="color:#5FD8FF">Hôte</span> : Solagro, en alternance</div>
+<div><span style="color:#5FD8FF">Noyau</span> : Python, SQL, PostGIS</div>
+<div><span style="color:#5FD8FF">Uptime</span> : depuis 2022</div>
+<div><span style="color:#5FD8FF">Formation</span> : mastère Expert en IA, Ynov</div>
+<div><span style="color:#5FD8FF">Spécialité</span> : machine learning, données</div>
+<div><span style="color:#5FD8FF">Bases</span> : PostgreSQL, PostGIS, MySQL, MongoDB</div>
+<div><span style="color:#5FD8FF">Outils</span> : Pandas, Git, Linux, Power BI</div>
+<div><span style="color:#5FD8FF">IA</span> : agents, ML, NLP, IA sobre</div>
+<div><span style="color:#5FD8FF">Agents</span> : Hermes, Claude Code, Codex, MiniWee</div>
+<div><span style="color:#5FD8FF">Bénévolat</span> : chef scout, SGDF</div>
+<div><span style="color:#5FD8FF">Disque</span> : environ 1 To de territoire</div>
+<div class="wave" style="margin-top:10px;display:flex;gap:0"><span style="width:28px;height:16px;background:#03140A;border:1px solid #2C8A4E"></span><span style="width:28px;height:16px;background:#FF5FA2"></span><span style="width:28px;height:16px;background:#4BE37A"></span><span style="width:28px;height:16px;background:#F4C430"></span><span style="width:28px;height:16px;background:#5FD8FF"></span><span style="width:28px;height:16px;background:#B48CFF"></span><span style="width:28px;height:16px;background:#FF7A45"></span><span style="width:28px;height:16px;background:#EFFFF4"></span></div>
+</div>
+</div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Me contacter</h2>
-                <p class="section-subtitle">Discutons de vos projets data science</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>contact@datascientist.fr</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <p>/in/datascientist</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>GitHub</h4>
-                            <p>/datascientist</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form class="form">
-                        <div class="form-group">
-                            <input type="text" id="name" required>
-                            <label for="name">Nom</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" required>
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" required></textarea>
-                            <label for="message">Message</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="blk" data-blk="3" style="--n:16">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cat a-propos.txt</span></div>
+<div class="out" style="max-width:68ch;color:#D8FFE6">
+<p style="margin:0 0 14px">J'aime la donnée quand elle sert à quelque chose : l'agriculture durable, l'environnement, des outils qu'on utilise vraiment. Le jour, j'administre une grosse base géographique chez Solagro. Le soir, je construis des outils et je fais travailler des agents.</p>
+<p style="margin:0">Je crois à une IA sobre et mesurée, à des bases rapides et fiables, et aux logiciels qui tournent chez vous plutôt que dans le cloud de quelqu'un d'autre. En dehors du code : beaucoup de cinéma, et le scoutisme : chef scout aux Scouts et Guides de France, où j'ai appris à mener une équipe.</p>
+</div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Portfolio Data Scientist. Tous droits réservés.</p>
-        </div>
-    </footer>
+<section class="blk" data-blk="4" style="--n:16">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">ls -la ~/projets</span></div>
+<pre class="out nr st" style="line-height:1.7"><span style="display:block">total 5</span><span class="hl" style="display:block">drwxr-xr-x  arthur  hermes   <span style="color:#6FBF8C">2026</span>  <a href="#hermes" style="color:#5FD8FF;font-weight:600">hermes-kitchen-companion/</a>      <span style="color:#6FBF8C">agent cuisine pour Discord</span></span><span class="hl" style="display:block">drwxr-xr-x  arthur  arthur   <span style="color:#6FBF8C">2026</span>  <a href="#miniwee" style="color:#5FD8FF;font-weight:600">miniwee/</a>                       <span style="color:#6FBF8C">mon équipe d&#39;agents</span></span><span class="hl" style="display:block">drwxr-xr-x  arthur  arthur   <span style="color:#6FBF8C">2026</span>  <a href="#omnigrimoire" style="color:#B48CFF;font-weight:600">omnigrimoire/</a>                  <span style="color:#6FBF8C">l&#39;atelier du maître du jeu</span></span><span class="hl" style="display:block">drwxr-xr-x  arthur  solagro  <span style="color:#6FBF8C">2024</span>  <a href="#territoire" style="color:#5FD8FF;font-weight:600">territoire/</a>                    <span style="color:#6FBF8C">≈ 1 To de PostGIS</span></span><span class="hl" style="display:block">drwxr-xr-x  arthur  solagro  <span style="color:#6FBF8C">2024</span>  <a href="#territoire" style="color:#5FD8FF;font-weight:600">portail-alimentation-durable/</a>  <span style="color:#6FBF8C">le volet IA</span></span></pre>
+</section>
 
-    <script src="js/script.js"></script>
+<section id="hermes" class="blk" data-blk="5" style="--n:43">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cat projets/hermes-kitchen-companion/README</span></div>
+<div class="out nr" style="display:flex;flex-wrap:wrap;gap:20px 56px">
+<div style="flex:1 1 380px;min-width:0;color:#D8FFE6">
+<p style="margin:0 0 12px;color:#F4C430;font-weight:600"># Hermes Kitchen Companion</p>
+<p style="margin:0 0 12px">Un assistant de cuisine auto-hébergé pour Hermes Agent et Discord. Une seule commande crée tout le serveur de la maison. Le jeton du bot n'est jamais écrit sur le disque, et le mode <span style="color:#F4C430">--dry-run</span> montre ce qui sera créé sans rien envoyer.</p>
+<p style="margin:0"><a href="https://github.com/ArthurRavel/hermes-kitchen-companion">github.com/ArthurRavel/hermes-kitchen-companion</a></p>
+</div>
+<pre class="st" style="color:#9FFFC0"><span style="display:block">Chez Dobby/</span><span style="display:block">├── discussion</span><span style="display:block">├── idées-repas</span><span style="display:block">├── reels</span><span style="display:block">├── carnet      <span style="color:#6FBF8C">(forum de recettes)</span></span><span style="display:block">└── courses</span><span style="display:block"> </span><span style="display:block"><span style="color:#F4C430">Dobby</span> <span style="color:#6FBF8C">écrit<span class="dots"></span></span></span></pre>
+</div>
+</section>
+
+<section id="ia" class="blk" data-blk="12" style="--n:13">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cd ~/ia && ls</span></div>
+<div class="out">
+<p style="margin:0 0 14px;font-size:clamp(22px,3vw,34px);line-height:1.15;color:#EFFFF4;font-weight:600">L'IA, je la fais, je l'encadre,<br>et je travaille avec elle tous les jours.<span class="cur" style="margin-left:8px"></span></p>
+<pre style="color:#5FD8FF;line-height:1.7">machine-learning/   charte-ia-solagro.md   miniwee/   agents.conf</pre>
+</div>
+</section>
+
+<section class="blk" data-blk="13" style="--n:37">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">python entrainer.py --projet covid-19</span></div>
+<div class="out nr">
+<pre class="st" style="line-height:1.75"><span style="display:block"><span style="color:#6FBF8C">chargement    </span><span style="color:#9FFFC0"><span class="bar" style="--w:9ch"></span></span>  101 départements, 7 indicateurs de santé</span><span style="display:block"><span style="color:#6FBF8C">lissage       </span><span style="color:#9FFFC0"><span class="bar" style="--w:9ch"></span></span>  moyenne glissante sur 7 jours</span><span style="display:block"><span style="color:#6FBF8C">normalisation </span><span style="color:#9FFFC0"><span class="bar" style="--w:9ch"></span></span>  RobustScaler, insensible aux pics</span><span style="display:block"><span style="color:#6FBF8C">non supervisé </span><span style="color:#5FD8FF"><span class="bar" style="--w:9ch"></span></span>  ACP, K-Means, clustering hiérarchique</span><span style="display:block"><span style="color:#6FBF8C">supervisé     </span><span style="color:#F4C430"><span class="bar" style="--w:9ch"></span></span>  régression logistique, KNN</span><span style="display:block"><span style="color:#6FBF8C">              </span><span style="color:#F4C430"><span class="bar" style="--w:9ch"></span></span>  random forest, gradient boosting</span><span style="display:block"><span style="color:#6FBF8C">validation    </span><span style="color:#4BE37A"><span class="bar" style="--w:9ch"></span></span>  croisée, 5 plis stratifiés</span></pre>
+<div style="display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-start;margin-top:26px">
+<div style="flex:0 1 auto"><pre style="line-height:1.15;color:#2C8A4E;border:1px solid #145A2E;padding:12px 14px">                        <span class="flow" style="--d:0.45s;color:#5FD8FF">+</span>    <span class="flow" style="--d:0.45s;color:#5FD8FF">+</span>    
+     <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span>  <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span>            <span class="flow" style="--d:0.45s;color:#5FD8FF">+</span> <span class="flow" style="--d:0.45s;color:#5FD8FF">+</span>          
+   <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span><span class="flow" style="--d:0.0s;color:#FF5FA2">o</span> <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span><span class="flow" style="--d:0.0s;color:#FF5FA2">o</span> <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span><span class="flow" style="--d:0.0s;color:#FF5FA2">o</span><span class="flow" style="--d:0.0s;color:#FF5FA2">o</span>          <span class="flow" style="--d:0.45s;color:#5FD8FF">+</span><span class="flow" style="--d:0.45s;color:#5FD8FF">+</span><span class="flow" style="--d:0.45s;color:#5FD8FF">+</span><span class="flow" style="--d:0.45s;color:#5FD8FF">+</span><span class="flow" style="--d:0.45s;color:#5FD8FF">+</span><span class="flow" style="--d:0.45s;color:#5FD8FF">+</span><span class="flow" style="--d:0.45s;color:#5FD8FF">+</span>     
+   <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span><span class="flow" style="--d:0.0s;color:#FF5FA2">o</span><span class="flow" style="--d:0.0s;color:#FF5FA2">o</span> <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span><span class="flow" style="--d:0.0s;color:#FF5FA2">o</span>          <span class="flow" style="--d:0.45s;color:#5FD8FF">+</span> <span class="flow" style="--d:0.45s;color:#5FD8FF">+</span> <span class="flow" style="--d:0.45s;color:#5FD8FF">+</span><span class="flow" style="--d:0.45s;color:#5FD8FF">+</span><span class="flow" style="--d:0.45s;color:#5FD8FF">+</span>        
+     <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span><span class="flow" style="--d:0.0s;color:#FF5FA2">o</span>                    <span class="flow" style="--d:1.35s;color:#B48CFF">*</span>      
+       <span class="flow" style="--d:0.0s;color:#FF5FA2">o</span>                    <span class="flow" style="--d:1.35s;color:#B48CFF">*</span>     
+         <span class="flow" style="--d:0.9s;color:#F4C430">x</span><span class="flow" style="--d:0.9s;color:#F4C430">x</span><span class="flow" style="--d:0.9s;color:#F4C430">x</span>             <span class="flow" style="--d:1.35s;color:#B48CFF">*</span>  <span class="flow" style="--d:1.35s;color:#B48CFF">*</span> <span class="flow" style="--d:1.35s;color:#B48CFF">*</span> <span class="flow" style="--d:1.35s;color:#B48CFF">*</span> 
+         <span class="flow" style="--d:0.9s;color:#F4C430">x</span><span class="flow" style="--d:0.9s;color:#F4C430">x</span><span class="flow" style="--d:0.9s;color:#F4C430">x</span><span class="flow" style="--d:0.9s;color:#F4C430">x</span><span class="flow" style="--d:0.9s;color:#F4C430">x</span>            <span class="flow" style="--d:1.35s;color:#B48CFF">*</span><span class="flow" style="--d:1.35s;color:#B48CFF">*</span><span class="flow" style="--d:1.35s;color:#B48CFF">*</span> <span class="flow" style="--d:1.35s;color:#B48CFF">*</span><span class="flow" style="--d:1.35s;color:#B48CFF">*</span>  
+          <span class="flow" style="--d:0.9s;color:#F4C430">x</span> <span class="flow" style="--d:0.9s;color:#F4C430">x</span>            <span class="flow" style="--d:1.35s;color:#B48CFF">*</span>        
+     <span class="flow" style="--d:0.9s;color:#F4C430">x</span>    <span class="flow" style="--d:0.9s;color:#F4C430">x</span>               <span class="flow" style="--d:1.35s;color:#B48CFF">*</span> <span class="flow" style="--d:1.35s;color:#B48CFF">*</span>     </pre><div style="color:#6FBF8C;font-size:13px;margin-top:6px">4 profils de départements, trouvés sans étiquette</div></div>
+<div style="flex:1 1 360px;min-width:0;color:#D8FFE6">
+<p style="margin:0 0 12px;color:#F4C430;font-weight:600"># Machine learning</p>
+<p style="margin:0 0 12px">Une carte interactive des profils épidémiques par département : sept indicateurs ramenés à la population, lissés sur une semaine pour gommer les week-ends, puis regroupés par K-Means après une ACP.</p>
+<p style="margin:0 0 12px">Sur les mêmes données de santé, quatre classifieurs comparés pour prédire la sévérité, validés en croisé sur cinq plis, et un diagnostic du surapprentissage du random forest.</p>
+<p style="margin:0;color:#9FFFC0">Python, Pandas, NumPy, scikit-learn, Folium [à confirmer]</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="blk" data-blk="14" style="--n:24">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">cat charte-ia-solagro.md</span></div>
+<div class="out nr" style="max-width:78ch">
+<div style="border:1px solid #2C8A4E;padding:22px 24px;color:#D8FFE6">
+<p style="margin:0 0 4px;color:#EFFFF4;font-weight:600"># Charte d'utilisation de « l'intelligence » artificielle</p>
+<p style="margin:0 0 18px;color:#6FBF8C">Solagro, 15 juin 2026, licence CC BY 4.0. Co-écrite par Arthur Ravel.</p>
+<p style="margin:0 0 14px">Une boussole éthique plutôt qu'un règlement : ni fascination, ni rejet de principe, mais de la lucidité.</p>
+<div class="st" style="line-height:1.8;margin-bottom:16px"><span style="display:block"><span style="color:#F4C430">1.</span> Les humains restent au centre : l&#39;IA n&#39;est qu&#39;un appui ponctuel.</span><span style="display:block"><span style="color:#F4C430">2.</span> L&#39;IA n&#39;est pas une autorité : rien ne vaut validation sans relecture humaine.</span><span style="display:block"><span style="color:#F4C430">3.</span> Protéger l&#39;autonomie intellectuelle contre la délégation systématique de la réflexion.</span><span style="display:block"><span style="color:#F4C430">4.</span> Chacun peut limiter ou refuser certains usages, sans stigmatisation.</span><span style="display:block"><span style="color:#F4C430">5.</span> Un usage réfléchi plutôt que réflexe, et la sobriété numérique face au coût environnemental.</span></div>
+<p style="margin:0"><a href="https://solagro.org/images/imagesCK/files/documents/Charte_utilisation_IA_Solagro.pdf">lire la charte complète (PDF)</a></p>
+</div>
+</div>
+</section>
+
+<section id="miniwee" class="blk" data-blk="15" style="--n:16">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">miniwee --status</span></div>
+<div class="out" style="display:flex;flex-wrap:wrap;gap:24px 56px;align-items:center">
+<pre style="color:#9FFFC0;line-height:1.35"> vous <span class="flow" style="--d:0s">──▶</span>  <span style="color:#F4C430">chef wee</span> <span class="cat" style="color:#F4C430"></span>   <span class="flow" style="--d:0.3s">──▶</span> deleguer(agent, mission)
+                │
+     ┌──────────┼───────────┐
+     <span class="flow" style="--d:0.6s">▼</span>          <span class="flow" style="--d:0.8s">▼</span>           <span class="flow" style="--d:1s">▼</span>
+ explorateur développeur  relecteur
+  <span class="cat" style="color:#5FD8FF"></span>      <span class="cat" style="color:#FF5FA2"></span>      <span class="cat" style="color:#B48CFF"></span>
+  <span style="color:#6FBF8C">Claude      Codex        Ollama</span>
+     └──────────┼───────────┘
+                <span class="flow" style="--d:1.3s">▼</span>
+ <span style="color:#9FFFC0">mémoire en graphe markdown (Obsidian)</span>
+ <span class="pulse" style="color:#4BE37A">●</span> miniwee : <span class="spin" style="color:#F4C430"></span> au travail</pre>
+<div style="flex:1 1 360px;min-width:0;color:#D8FFE6">
+<p style="margin:0 0 12px;color:#F4C430;font-weight:600"># Mini Wee</p>
+<p style="margin:0 0 12px">Mon harness d'agents : une app locale où une équipe de « wee » spécialisés (Claude, Codex ou Ollama) se partage le travail. Un chef découpe, délègue des missions, et chaque wee rend un rapport. Tous partagent une mémoire en notes markdown reliées, lisible dans Obsidian.</p>
+<p style="margin:0 0 12px">Six modes, chacun avec ses outils et son ambiance : Code, Projet, Recherche, Data, Amélioration continue, et Cheat, qui chasse des idées d'apps qui ont un marché. Beaucoup de questions avant d'agir, des permissions explicites, rien d'écrasé sans accord.</p>
+<p style="margin:0;color:#9FFFC0">Python, FastAPI, WebSocket, Claude Agent SDK, DuckDB, JS natif sans build. Chaque wee est un petit chat pixel.</p>
+</div>
+</div>
+</section>
+
+<section class="blk" data-blk="16" style="--n:4">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">htop</span></div>
+<div class="out nr">
+<pre class="st" style="line-height:1.75;color:#9FFFC0"><span style="display:block"><span style="background:#4BE37A;color:#03140A;font-weight:600">  PID  AGENT          ACTIVITÉ               CE QUE JE LUI CONFIE            </span></span><span class="hl" style="display:block">  101  <span style="color:#EFFFF4">claude-code  </span>  <span style="color:#4BE37A">[<span style="display:inline-block;width:20ch"><span class="bar lv" style="--w:18ch"></span></span>]</span>  code, refontes, maquettes</span><span class="hl" style="display:block">  102  <span style="color:#EFFFF4">codex        </span>  <span style="color:#5FD8FF">[<span style="display:inline-block;width:20ch"><span class="bar lv" style="--w:13ch"></span></span>]</span>  revues, tâches en parallèle</span><span class="hl" style="display:block">  103  <span style="color:#EFFFF4">hermes       </span>  <span style="color:#F4C430">[<span style="display:inline-block;width:20ch"><span class="bar lv" style="--w:10ch"></span></span>]</span>  agent du quotidien, la cuisine</span><span class="hl" style="display:block">  104  <span style="color:#EFFFF4">miniwee      </span>  <span style="color:#B48CFF">[<span style="display:inline-block;width:20ch"><span class="bar lv" style="--w:15ch"></span></span>]</span>  une équipe entière d&#39;agents</span><span style="display:block"><span style="color:#2C8A4E">  Tâches : 4 agents, <span class="spin"></span> en cours. Rewindary et Abo Killer : écrits en course publique par Claude Code et Codex.</span></span></pre>
+<p style="margin:14px 0 0;max-width:68ch;color:#D8FFE6">Je travaille au quotidien avec des agents de code : je cadre, je découpe, je relis et je tranche. Le métier change, autant apprendre à le faire bien.</p>
+</div>
+</section>
+
+<section id="omnigrimoire" class="blk" data-blk="6" style="--n:31">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cat projets/omnigrimoire/README</span></div>
+<div class="out">
+<div style="display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-start">
+<div style="flex:1 1 440px;min-width:0;color:#D8FFE6">
+<p style="margin:0 0 12px;color:#B48CFF;font-weight:600"># Omnigrimoire</p>
+<p style="margin:0 0 12px">L'atelier complet du maître du jeu de rôle : règles, personnages, monde, rencontres et suivi de combat réunis au même endroit, au lieu d'être éparpillés entre livres, fiches papier et notes.</p>
+<p style="margin:0 0 12px">Trois systèmes coexistent : D&amp;D 5e (SRD 2024), un mode narratif générique, et <span style="color:#F4C430">Archipels</span>, mon propre système de jeu sans classes, du niveau 1 au niveau 20, avec 310 fiches jouables. Le MJ invite ses joueurs par code, et le Scriptorium permet d'emballer du contenu en kits réutilisables d'une table à l'autre.</p>
+<p style="margin:0 0 12px">Un assistant IA en RAG répond sur les règles et la campagne : plus de 23 000 fragments indexés, recherche vectorielle en numpy, modèles locaux via Ollama ou distants via Groq. Le tout tourne en Docker sur un Raspberry Pi à la maison.</p>
+<p style="margin:0;color:#6FBF8C">Campagne en cours : l'Île des Contes, où les histoires ne se déroulent plus comme elles le devraient.</p>
+</div>
+<pre style="color:#B48CFF;line-height:1.25">     __________   __________
+   .'          `.'          `.
+  |  ~~~~~~~~~  |  ~~~~~~~~~  |
+  |  ~~~~~~~    |  ~~~~~~~~   |
+  |  ~~~~~~~~~  |  ~~~~~~     |
+  |  ~~~~~      |  ~~~~~~~~~  |
+  |  ~~~~~~~~   |  ~~~~~~~    |
+  |___________  |  ___________|
+              `.|.'</pre>
+</div>
+<pre style="margin-top:22px;color:#9FFFC0;line-height:1.6"><span style="color:#6FBF8C">$ cloc omnigrimoire/ --quiet</span>
+<span style="color:#EFFFF4">langage        lignes   rôle</span>
+Python         <span class="cnt" style="--to:18631"></span>   Django, Django REST Framework, RAG
+React (JSX)    <span class="cnt" style="--to:14449"></span>   interface, fiches, assistant
+tests          <span class="cnt" style="--to:70"></span>      pytest
+fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipels</pre>
+</div>
+</section>
+
+
+<section id="territoire" class="blk" data-blk="7" style="--n:63">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">psql -c "SELECT pg_size_pretty(pg_database_size('territoire'))"</span></div>
+<div class="out" style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center">
+<div style="flex:1 1 380px;min-width:0">
+<pre style="color:#EFFFF4"> pg_size_pretty
+----------------
+ ≈ <span class="cnt" style="--to:1000"></span> Go
+(1 ligne)</pre>
+<p style="margin:18px 0 0;max-width:60ch;color:#D8FFE6">Chez Solagro, j'administre cette base PostgreSQL et PostGIS construite à partir d'open data géographique : structuration, normalisation, indexation, optimisation SQL et automatisation en Python. Je supervise aussi le volet IA du Portail de l'Alimentation Durable.</p>
+<p style="margin:10px 0 0;color:#F4C430">[Un chiffre avant/après : le temps d'une requête type]</p>
+</div>
+<div style="flex:1 1 420px;min-width:0">
+<canvas id="map" role="img" aria-label="Carte de France en relief, dessinée en caractères ASCII, qui pivote lentement ; Toulouse est marquée en rose" style="width:100%;height:clamp(320px,40vw,460px);display:block"></canvas>
+<p style="margin:6px 0 0;color:#6FBF8C;font-size:13px">SELECT ST_Extent(geom) FROM france;  -- bougez la souris</p>
+</div>
+</div>
+</section>
+
+
+
+<section class="blk" data-blk="9" style="--n:34">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">git log --oneline --graph parcours</span></div>
+<pre class="out nr st" style="line-height:1.8"><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">a3f9c1e</span> <span style="color:#FF5FA2">(HEAD)</span> 2025  mastère Expert en IA, Ynov Toulouse, en alternance (août 2025 à oct. 2027)</span><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">7d21b08</span> 2024  administrateur de bases de données, Solagro, en alternance</span><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">4be0f3a</span> 2024  stage d'administration de bases de données, Solagro</span><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">19c6e5d</span> 2022  BUT Informatique, parcours AGED Data-IA, IUT de Toulouse (2022 à 2025)</span><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">0000001</span> commit initial</span></pre>
+</section>
+
+
+
+<section class="blk" data-blk="10" style="--n:23">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">systemctl status scouts</span></div>
+<pre class="out" style="line-height:1.7;white-space:pre-wrap"><span class="pulse" style="color:#4BE37A">●</span> <span style="color:#EFFFF4;font-weight:600">chef-scout.service</span>, Scouts et Guides de France
+     Active : <span style="color:#F4C430">terminé</span> (sept. 2023 à oct. 2024, 1 an 2 mois)
+       Unité : Enfants
+        Rôle : encadrement et animation d'un groupe d'une vingtaine de jeunes
+
+<span class="pulse" style="color:#4BE37A">●</span> <span style="color:#EFFFF4;font-weight:600">responsable-unite.service</span>, responsable d'unité, chef scout
+     Active : <span style="color:#F4C430">[dates]</span>
+        Rôle : [ce que tu pilotais : équipe d'encadrants, budget, camps]</pre>
+</section>
+
+<section class="blk" data-blk="11" style="--n:7">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">contact</span></div>
+<div class="out">
+<a href="mailto:arthurravel@orange.fr" style="display:inline-block;font-size:clamp(26px,4.6vw,52px);line-height:1.1;color:#EFFFF4;font-weight:600;margin-bottom:14px">arthurravel@orange.fr<span class="cur" style="margin-left:10px;height:.9em"></span></a>
+<div style="display:flex;flex-wrap:wrap;gap:8px 28px"><a href="https://www.linkedin.com/in/arthur-ravel/">linkedin</a><a href="https://github.com/ArthurRavel">github</a><a href="https://arthurravel.fr/ARTHUR-RAVEL-CV.pdf">cv.pdf</a></div>
+</div>
+</section>
+
+<section aria-label="Terminal interactif" style="border-top:1px dashed #2C8A4E;padding-top:28px">
+<div id="hist" aria-live="polite"></div>
+<label style="display:flex;align-items:center;gap:0;margin-top:6px"><span style="white-space:nowrap"><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$&#160;</span><input id="cmd" aria-label="Tapez une commande, par exemple help" autocomplete="off" spellcheck="false" style="flex:1;min-width:0;background:transparent;border:none;color:#EFFFF4;font:inherit;caret-color:#4BE37A;padding:6px 0"></label>
+<p style="margin:10px 0 0;color:#2C8A4E;font-size:13px">tapez help puis Entrée</p>
+</section>
+</div>
+
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:30;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.2) 0 1px,transparent 1px 3px)"></div>
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:30;pointer-events:none;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.5) 100%)"></div>
+
+<div id="boot" style="position:fixed;inset:0;z-index:40;background:#010A05;color:#9FFFC0;font-size:14px;line-height:1.6;overflow:hidden">
+<button type="button" id="skip" style="position:absolute;z-index:2;top:16px;right:16px;min-height:44px;padding:0 16px;background:transparent;border:1px solid #2C8A4E;color:#9FFFC0;font:500 13px 'IBM Plex Mono',monospace;cursor:pointer">passer le démarrage</button>
+<div id="bootlines" style="padding:28px clamp(14px,3vw,32px)"></div>
+<canvas id="splash" aria-hidden="true" style="position:absolute;left:0;top:0;width:100%;height:min(100vh,900px);display:none"></canvas>
+<div id="login" style="display:none;padding:28px clamp(14px,3vw,32px);font-size:15px">
+<div>Ravel OS 1.0 ravel-os tty1</div><div>&#160;</div>
+<div style="--n:8;margin:0" class="blk on"><span>ravel-os login: </span><span class="cmd" style="color:#EFFFF4">visiteur</span></div>
+<div style="--n:10;margin:0" class="blk on"><span>mot de passe : </span><span class="cmd">**********</span></div>
+<div style="color:#4BE37A">Connexion réussie. Bonne visite.</div>
+</div>
+</div>
+</div>
+<script>
+(function () {
+  var $ = function (q) { return document.querySelector(q); };
+  var BOOT = [
+      ['', 'RAVEL-BIOS v2.6   (c) 2026 Arthur Ravel', '#EFFFF4'], ['', 'Processeur : curiosité x8 à 3,2 GHz', ''], ['', 'Test mémoire : 32768 Mo OK', ''], ['', ' ', ''],
+      ['[  OK  ] ', 'Montage de /home/visiteur', '#4BE37A'], ['[  OK  ] ', 'Démarrage de PostgreSQL 17 et PostGIS', '#4BE37A'], ['[  OK  ] ', 'Indexation du territoire (≈ 1 To)', '#4BE37A'],
+      ['[  OK  ] ', 'Chargement de la carte de France', '#4BE37A'], ['[  OK  ] ', 'Réveil des agents : hermes, claude-code, codex, miniwee', '#4BE37A'],
+      ['[  OK  ] ', "Ouverture de l'omnigrimoire", '#B48CFF'], ['[  OK  ] ', 'Lancement de Ravel OS', '#4BE37A']
+    ];
+  var store = { get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
+  class App {
+    constructor() {
+      this.splash = $('#splash'); this.map = $('#map'); this.content = $('#content');
+      this.timers = []; this.phase = 'boot'; this.on = {};
+    }
+    setPhase(p) {
+      this.phase = p;
+      var boot = $('#boot'); if (!boot) return;
+      $('#bootlines').style.display = p === 'boot' ? 'block' : 'none';
+      this.splash.style.display = p === 'splash' ? 'block' : 'none';
+      $('#login').style.display = p === 'login' ? 'block' : 'none';
+      if (p === 'boot') { boot.style.display = 'block'; boot.classList.remove('bootout'); $('#bootlines').innerHTML = ''; }
+      if (p === 'out') boot.classList.add('bootout');
+      if (p === 'done') { boot.style.display = 'none'; store.set('ravelos-boot', '1'); }
+    }
+    finish() { this.timers.forEach(clearTimeout); this.setPhase('done'); }
+    boot(force) {
+      this.timers.forEach(clearTimeout); this.timers = [];
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || (!force && store.get('ravelos-boot') && !/[?&]boot/.test(location.search))) { this.setPhase('done'); return; }
+      this.setPhase('boot');
+      var self = this, at = function (ms, fn) { self.timers.push(setTimeout(fn, ms)); };
+      BOOT.forEach(function (b, i) {
+        at((i + 1) * 150, function () {
+          var d = document.createElement('div'); d.style.whiteSpace = 'pre-wrap';
+          var tag = document.createElement('span'); tag.style.color = b[2] || '#9FFFC0'; tag.textContent = b[0];
+          d.appendChild(tag); d.appendChild(document.createTextNode(b[1])); $('#bootlines').appendChild(d);
+        });
+      });
+      at(2200, function () { self.splashT = performance.now(); self.setPhase('splash'); });
+      at(5900, function () { self.setPhase('login'); });
+      at(7700, function () { self.setPhase('out'); });
+      at(8300, function () { self.setPhase('done'); });
+    }
+    print(lines) {
+      var h = $('#hist');
+      lines.forEach(function (l) { var d = document.createElement('div'); d.style.whiteSpace = 'pre-wrap'; d.style.color = l.color; d.textContent = l.text; h.appendChild(d); });
+      while (h.children.length > 40) h.removeChild(h.firstChild);
+    }
+    run(raw) {
+      var self = this;
+      this.setState = function (o) {
+        if (o.hist && o.hist.length === 0) $('#hist').innerHTML = '';
+        else if (o.hist) { $('#hist').innerHTML = ''; self.print(o.hist); }
+        if ('input' in o) $('#cmd').value = o.input;
+      };
+      this.state = { hist: Array.from($('#hist').children).map(function (d) { return { text: d.textContent, color: d.style.color }; }) };
+      
+    const c = raw.trim().toLowerCase(), L = (text, color) => ({ text, color: color || '#D8FFE6' });
+    let out = [];
+    if (!c) out = [];
+    else if (c === 'help') out = [L('commandes : whoami  projets  ia  omnigrimoire  miniwee  carte  scouts  contact  cv  clear  reboot', '#F4C430')];
+    else if (c === 'whoami') out = [L('Arthur Ravel, développeur data et IA à Toulouse.')];
+    else if (c === 'projets' || c === 'ls' || c.startsWith('ls ')) out = [L('hermes-kitchen-companion/  omnigrimoire/  miniwee/  territoire/  portail-alimentation-durable/', '#5FD8FF')];
+    else if (c === 'contact') out = [L('arthurravel@orange.fr  linkedin.com/in/arthur-ravel  github.com/ArthurRavel')];
+    else if (c.includes('scout')) out = [L('Chef scout aux Scouts et Guides de France : une vingtaine de jeunes à encadrer. Toujours prêt.', '#F4C430')];
+    else if (c === 'ia' || c === 'cd ia' || c === 'cd ~/ia') out = [L('machine-learning/  charte-ia-solagro.md  miniwee/  agents.conf', '#5FD8FF')];
+    else if (c.includes('miniwee')) out = [L("Mini Wee : une équipe d'agents Claude, Codex et Ollama, avec une mémoire commune dans Obsidian. =^.^=", '#F4C430')];
+    else if (c.includes('claude') || c.includes('codex')) out = [L('Mes binômes de code au quotidien. Ce site a été maquetté avec Claude.', '#5FD8FF')];
+    else if (c === 'cv') out = [L('arthurravel.fr/ARTHUR-RAVEL-CV.pdf')];
+    else if (c === 'carte' || c.includes('france')) out = [L('La carte de France tourne un peu plus haut, à côté du téraoctet.', '#5FD8FF')];
+    else if (c === 'clear') { this.setState({ hist: [], input: '' }); return; }
+    else if (c === 'reboot') { this.setState({ hist: [], input: '' }); window.scrollTo(0, 0); this.boot(true); return; }
+    else if (c.startsWith('sudo')) out = [L("visiteur n'est pas dans le fichier sudoers. Cet incident sera signalé à Arthur.", '#FF7A45')];
+    else if (c.includes('omnigrimoire')) out = [L("Omnigrimoire : l'atelier du maître du jeu, avec Archipels, mon propre système de jeu. Voir plus haut.", '#B48CFF')];
+    else out = [L('commande introuvable : ' + c + '. Tapez help.', '#FF7A45')];
+    this.setState({ hist: this.state.hist.concat([L('visiteur@ravel-os:~$ ' + raw, '#4BE37A')], out).slice(-40), input: '' });
+    }
+  drawSplash(t) {
+    const cv = this.splash; if (!cv) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2), W = cv.clientWidth, H = cv.clientHeight; if (!W) return;
+    if (cv.width !== Math.round(W * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+    const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.fillStyle = '#010A05'; ctx.fillRect(0, 0, W, H);
+    const A = ['.###.', '#...#', '#...#', '#####', '#...#', '#...#', '#...#'], R = ['####.', '#...#', '#...#', '####.', '#.#..', '#..#.', '#...#'];
+    const G = A.map((r, y) => r + '..' + R[y]), gw = G[0].length, cw = W < 700 ? 7 : 10, chh = Math.round(cw * 1.8);
+    const px = Math.max(2, Math.floor(Math.min(W * 0.6 / (gw * cw), H * 0.42 / (7 * chh)))), cx0 = Math.round((W - gw * px * cw) / 2), cy0 = Math.round(H * 0.4 - 3.5 * px * chh);
+    const el = (performance.now() - (this.splashT || 0)) / 1000, rowsShown = Math.floor(el / 0.05);
+    ctx.font = Math.round(cw * 1.55) + 'px "IBM Plex Mono", monospace'; ctx.textBaseline = 'top';
+    let row = 0;
+    for (let y = 0; y < 7; y++) for (let sy = 0; sy < px; sy++, row++) {
+      if (row > rowsShown) continue;
+      const glitch = Math.random() < 0.012 ? (Math.random() < 0.5 ? -2 : 2) : 0;
+      for (let x = 0; x < gw; x++) {
+        if (G[y][x] !== '#') continue;
+        for (let sx = 0; sx < px; sx++) {
+          const X = cx0 + (x * px + sx + glitch) * cw, Y = cy0 + row * chh;
+          ctx.fillStyle = '#145A2E'; ctx.fillText(':', X + cw, Y + chh * 0.5);
+          ctx.fillStyle = row === rowsShown ? '#EFFFF4' : '#4BE37A'; ctx.fillText('#', X, Y);
+        }
+      }
+    }
+    const pr = Math.min(1, el / 3.4), n = 30, k = Math.floor(pr * n);
+    const msg = ['chargement des graines', 'indexation du territoire', 'réveil des agents', "ouverture de l'omnigrimoire"][Math.min(3, Math.floor(pr * 4))];
+    ctx.font = '15px "IBM Plex Mono", monospace'; ctx.textAlign = 'center'; ctx.fillStyle = '#9FFFC0';
+    ctx.fillText('[' + '#'.repeat(k) + '.'.repeat(n - k) + ']  ' + Math.round(pr * 100) + ' %', W / 2, H * 0.78);
+    ctx.fillStyle = '#4BE37A'; ctx.fillText(msg, W / 2, H * 0.78 + 28); ctx.textAlign = 'left';
+  }
+  buildFrance() {
+    const FR = [[2.4, 51.05], [3.2, 50.8], [4.2, 50.0], [5.8, 49.5], [8.2, 49.0], [7.6, 47.6], [6.9, 47.4], [6.0, 46.4], [6.8, 45.9], [7.0, 44.9], [7.5, 43.8], [6.6, 43.1], [5.0, 43.4], [4.0, 43.5], [3.1, 43.1], [3.1, 42.45], [1.7, 42.5], [-0.3, 42.8], [-1.8, 43.4], [-1.2, 44.6], [-1.2, 46.2], [-2.2, 47.1], [-4.4, 47.8], [-4.7, 48.4], [-3.0, 48.8], [-1.6, 48.6], [-1.4, 49.7], [0.2, 49.5], [1.5, 50.2]];
+    const inside = (x, y) => { let c = false; for (let i = 0, j = FR.length - 1; i < FR.length; j = i++) { const a = FR[i], b = FR[j]; if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) c = !c; } return c; };
+    const hill = (lo, la, clo, cla, sx, sy, h) => h * Math.exp(-(((lo - clo) / sx) ** 2 + ((la - cla) / sy) ** 2));
+    const elev = (lo, la) => hill(lo, la, 6.6, 45.6, 0.7, 1.0, 1) + hill(lo, la, 0.9, 42.7, 2.2, 0.35, 0.8) + hill(lo, la, 2.9, 45.2, 0.9, 0.8, 0.45) + hill(lo, la, 7.0, 48.2, 0.35, 0.6, 0.3) + hill(lo, la, 6.0, 46.7, 0.5, 0.5, 0.25) + 0.04 * Math.sin(lo * 3) * Math.cos(la * 4);
+    const P = [], cosl = Math.cos(46.5 * Math.PI / 180);
+    for (let la = 42.3; la <= 51.2; la += 0.11) for (let lo = -5; lo <= 8.4; lo += 0.11 / cosl) {
+      if (!inside(lo, la)) continue;
+      P.push([(lo - 1.6) * cosl, -(la - 46.6), Math.max(0, elev(lo, la))]);
+    }
+    const edge = [];
+    FR.forEach((a, i) => { const b = FR[(i + 1) % FR.length]; for (let k = 0; k < 12; k++) { const lo = a[0] + (b[0] - a[0]) * k / 12, la = a[1] + (b[1] - a[1]) * k / 12; edge.push([(lo - 1.6) * cosl, -(la - 46.6)]); } });
+    this.fr = { P, edge, tls: [(1.44 - 1.6) * cosl, -(43.6 - 46.6)] };
+  }
+  drawFrance(t) {
+    const cv = this.map; if (!cv) return;
+    const rc = cv.getBoundingClientRect(); if (rc.bottom < 0 || rc.top > window.innerHeight || !rc.width) return;
+    if (!this.fr) this.buildFrance();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2), W = rc.width, H = rc.height;
+    if (cv.width !== Math.round(W * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+    const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.fillStyle = '#03140A'; ctx.fillRect(0, 0, W, H);
+    const cw = W < 500 ? 6 : 7, chh = Math.round(cw * 1.75), cols = Math.floor(W / cw), rows = Math.floor(H / chh), zb = new Float32Array(cols * rows).fill(1e9), ch = new Array(cols * rows), co = new Array(cols * rows);
+    const ay = Math.sin(t * 0.25) * 0.5 + (this.mx || 0) * 0.9, ax = 0.95 + (this.my || 0) * 0.3, ca = Math.cos(ay), sa = Math.sin(ay), cb = Math.cos(ax), sb = Math.sin(ax);
+    const S = Math.min(W / 9.6, H / 9.2), D = 14, ox = W * 0.5, oy = H * 0.47, hz = 1.1;
+    const put = (x, y, z, c, col) => {
+      const x1 = x * ca - y * sa, y1 = x * sa + y * ca, y2 = y1 * cb - z * sb, z2 = y1 * sb + z * cb, f = D / (D + y2);
+      const cx = Math.floor((ox + x1 * f * S) / cw), cy = Math.floor((oy - z2 * f * S) / chh);
+      if (cx < 0 || cy < 0 || cx >= cols || cy >= rows) return; const i = cy * cols + cx; if (y2 >= zb[i]) return; zb[i] = y2; ch[i] = c; co[i] = col;
+    };
+    const RAMP = '.:-=+*#%@', COLS = ['#1E6B3A', '#2C8A4E', '#3BC46A', '#4BE37A', '#9FD8B2', '#D8C66A', '#F4C430', '#EFE2B0', '#EFFFF4'];
+    for (const p of this.fr.P) { const h = p[2], k = Math.min(8, Math.floor(h * 9)); put(p[0], -p[1], h * hz, RAMP[k], COLS[k]); }
+    for (const e of this.fr.edge) put(e[0], -e[1], 0, '#', '#4BE37A');
+    const tl = this.fr.tls, pulse = (t * 0.6) % 1;
+    for (let k = 0; k < 8; k++) put(tl[0], -tl[1], 0.12 + k * 0.12, '|', '#FF5FA2');
+    put(tl[0], -tl[1], 1.1, '@', '#FF5FA2');
+    for (let a = 0; a < 6.28; a += 0.25) put(tl[0] + Math.cos(a) * pulse * 0.6, -tl[1] + Math.sin(a) * pulse * 0.6, 0.02, pulse < 0.5 ? 'o' : '.', '#FF8FC8');
+    ctx.font = Math.round(cw * 1.6) + 'px "IBM Plex Mono", monospace'; ctx.textBaseline = 'top';
+    let lx = 0, ly = 0;
+    for (let i = 0; i < ch.length; i++) { if (!ch[i]) continue; ctx.fillStyle = co[i]; ctx.fillText(ch[i], (i % cols) * cw, Math.floor(i / cols) * chh); }
+    { const x1 = tl[0] * ca - (-tl[1]) * sa, y1 = tl[0] * sa + (-tl[1]) * ca, y2 = y1 * cb - 1.1 * sb, z2 = y1 * sb + 1.1 * cb, f = D / (D + y2); lx = ox + x1 * f * S; ly = oy - z2 * f * S; }
+    ctx.font = '600 13px "IBM Plex Mono", monospace'; ctx.fillStyle = '#FFB3CF'; ctx.fillText('Toulouse, Solagro', lx + 12, ly - 6);
+  }
+
+    start() {
+      var self = this;
+      var fmt = function () { var d = new Date(); return d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' }) + ' ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }); };
+      $('#clock').textContent = fmt(); setInterval(function () { $('#clock').textContent = fmt(); }, 20000);
+      window.addEventListener('pointermove', function (e) { self.mx = e.clientX / window.innerWidth - 0.5; self.my = e.clientY / window.innerHeight - 0.5; });
+      $('#skip').addEventListener('click', function () { self.finish(); });
+      $('#cmd').addEventListener('keydown', function (e) { if (e.key === 'Enter') self.run($('#cmd').value); });
+      this.boot(false);
+      var t0 = performance.now(), fr = 0;
+      var blocks = Array.from(this.content.querySelectorAll('[data-blk]'));
+      var loop = function (now) {
+        requestAnimationFrame(loop); fr++;
+        var t = (now - t0) / 1000;
+        if (self.phase === 'splash') self.drawSplash(t);
+        if (self.phase === 'done' || self.phase === 'out') {
+          self.drawFrance(t);
+          if (fr % 8 === 0) blocks.forEach(function (el) {
+            if (el.classList.contains('on')) return;
+            if (el.getBoundingClientRect().top < window.innerHeight * 0.85) el.classList.add('on');
+          });
+        }
+      };
+      requestAnimationFrame(loop);
+    }
+  }
+  new App().start();
+})();
+</script>
 </body>
 </html>
