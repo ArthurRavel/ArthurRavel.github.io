@@ -37,34 +37,55 @@ pre{margin:0;font:inherit;white-space:pre;overflow-x:auto}
 @media (prefers-reduced-motion:reduce){*,*::after{animation:none!important}.blk .cmd{width:auto}.blk .out,.st>*{visibility:visible;opacity:1}.bar{width:var(--w)}.cnt{--c:var(--to)}}
 @media (max-width:700px){.wrap{font-size:13px!important}.blk{margin-bottom:56px}.blk.on .cmd{animation:none;width:auto;white-space:normal;overflow-wrap:anywhere}}
 </style>
+<style>
+.cm{color:#6FBF8C;opacity:0;white-space:pre}.blk.on .cm{animation:pop .4s ease forwards;animation-delay:calc(var(--n) * 55ms + .15s)}.blk.on.run>div:first-child{animation:flash 1s ease}
+@keyframes flash{0%,60%{background:#0E3A20}100%{background:transparent}}@keyframes win{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+#tree{position:fixed;z-index:15;top:52px;left:16px;width:230px;font-size:13px;line-height:1.75;color:#6FBF8C;display:none}#tree .tr-h{display:block;color:#EFFFF4;font-weight:600;margin-bottom:4px}
+.tl{display:block;width:100%;text-align:left;background:none;border:0;padding:0 6px;font:inherit;color:#9FFFC0;text-decoration:none;cursor:pointer;white-space:pre;border-radius:2px}.tl .tp{color:#2C8A4E}.tl:hover,.tl[aria-current=true]{background:#0E3A20;color:#EFFFF4}.tl.sub{color:#6FBF8C}.tl.sub:hover{color:#F4C430}
+#mnav{position:sticky;top:33px;z-index:19;display:flex;gap:8px;overflow-x:auto;padding:10px 14px;background:#03140A;border-bottom:1px solid #145A2E;font-size:13px}#mnav a{flex:none;color:#9FFFC0;text-decoration:none;border:1px solid #2C8A4E;padding:6px 10px;border-radius:2px}
+@media (min-width:1180px){#tree{display:block}#mnav{display:none}.wrap{margin:0 auto 0 max(270px,calc((100vw - 1060px) / 2))!important}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{display:flex;flex-direction:column;gap:8px;text-align:left;background:#061C0E;border:1px solid #145A2E;padding:14px;font:inherit;color:#D8FFE6;cursor:pointer;transition:border-color .25s,transform .25s;border-radius:2px}.card:hover,.card:focus-visible{border-color:#4BE37A;transform:translateY(-3px)}.card:hover .duo{filter:none}
+.cdir{font-size:12px;color:#6FBF8C}.ctit{font-size:20px;font-weight:600;color:#EFFFF4;line-height:1.2}.cacc{font-size:14px;line-height:1.55}.ctags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:11px;border:1px solid #2C8A4E;padding:2px 6px;color:#9FFFC0}.cgo{margin-top:auto;color:#F4C430;font-size:13px}
+.open{margin-top:6px;background:none;border:1px solid #F4C430;color:#F4C430;font:inherit;padding:8px 14px;cursor:pointer;border-radius:2px}.open:hover{background:#F4C430;color:#03140A}
+.duo{filter:grayscale(1) sepia(1) hue-rotate(70deg) saturate(2.2) brightness(.8);transition:filter .5s}
+dialog#fiche{padding:0;border:1px solid #2C8A4E;background:#03140A;color:#D8FFE6;width:min(1120px,94vw);max-height:92vh;font-family:'IBM Plex Mono',monospace;box-shadow:0 0 0 1px #0B2A17,0 30px 90px rgba(0,0,0,.6)}dialog#fiche[open]{animation:win .35s cubic-bezier(.2,.8,.2,1)}dialog#fiche::backdrop{background:rgba(1,10,5,.84);backdrop-filter:blur(3px)}
+.wbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 10px 8px 16px;background:#4BE37A;color:#03140A;font-size:13px;font-weight:600}.wbar>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.wbar>span:last-child{flex:none}.wbar button{background:#03140A;color:#9FFFC0;border:0;font:inherit;padding:6px 10px;cursor:pointer;min-height:32px}.wbar button:hover{color:#F4C430}
+.fb{overflow:auto;max-height:calc(92vh - 48px);padding:clamp(18px,3vw,36px);font-size:15px;line-height:1.7}.fb h2{margin:0 0 6px;font-size:clamp(26px,4vw,44px);line-height:1.05;color:#EFFFF4}.fb h3{margin:30px 0 10px;font-size:15px;color:#F4C430}.fb h3::before{content:'## ';color:#2C8A4E}.fb p{margin:0 0 12px;max-width:72ch}.fb pre{border-left:2px solid #2C8A4E;padding:10px 14px;background:#061C0E;color:#9FFFC0;line-height:1.55}.fb code{color:#F4C430}.fb .p{color:#6FBF8C}
+.fb>*{opacity:0;animation:pop .4s ease forwards;animation-delay:calc(var(--i,0) * 70ms)}
+.kpis{display:flex;flex-wrap:wrap;gap:10px 36px;margin:18px 0 6px}.kpi b{display:block;font-size:28px;color:#EFFFF4}.kpi span{font-size:12px;color:#6FBF8C}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}.gal button{background:none;border:1px solid #145A2E;padding:0;cursor:zoom-in;display:block;width:100%}.gal img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block}.gal button:hover img{filter:none}.gal figcaption{font-size:12px;color:#6FBF8C;margin-top:6px;line-height:1.4}.gal figure{margin:0}
+#lb{position:fixed;inset:0;z-index:5;background:rgba(1,10,5,.95);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px}#lb[hidden]{display:none}#lb img{max-width:100%;max-height:78vh;border:1px solid #2C8A4E}#lb p{margin:0;color:#9FFFC0;font-size:14px;text-align:center}#lb .lbb{display:flex;gap:10px}#lb button{background:#03140A;color:#9FFFC0;border:1px solid #2C8A4E;font:inherit;padding:8px 14px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.fb>*,.cm{opacity:1}}
+@media (max-width:700px){#content{padding-top:28px!important}.grid{grid-template-columns:1fr}}
+body>div>div:first-child{flex-wrap:nowrap!important;white-space:nowrap;overflow:hidden}@media (max-width:700px){body>div>div:first-child>span:nth-child(2){display:none}}
+</style>
 <noscript><style>#boot{display:none!important}.blk .cmd{width:auto}.blk .out,.st>*{visibility:visible;opacity:1}.bar{width:var(--w)}</style></noscript>
 </head>
 <body>
 <div style="position:relative;min-height:100vh;background:#03140A;color:#9FFFC0;font-family:'IBM Plex Mono',monospace">
-
 <div style="position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;padding:8px clamp(14px,3vw,32px);background:#4BE37A;color:#03140A;font-size:13px;font-weight:600">
 <span>Ravel OS 1.0</span><span>visiteur@ravel-os : ~</span><span id="clock"></span>
 </div>
-
+<nav id="tree" aria-label="Sommaire"><span class="tr-h">~/</span><a class="tl " href="#qui"><span class="tp">├── </span>qui-suis-je</a><a class="tl " href="#apropos"><span class="tp">├── </span>a-propos</a><a class="tl " href="#projets"><span class="tp">├── </span>projets/</a><button type="button" class="tl sub" data-open="miniwee"><span class="tp">│   ├── </span>miniwee</button><button type="button" class="tl sub" data-open="omnigrimoire"><span class="tp">│   ├── </span>omnigrimoire</button><button type="button" class="tl sub" data-open="hermes"><span class="tp">│   ├── </span>hermes-kitchen-companion</button><button type="button" class="tl sub" data-open="territoire"><span class="tp">│   ├── </span>territoire</button><button type="button" class="tl sub" data-open="ml"><span class="tp">│   └── </span>machine-learning</button><a class="tl " href="#ia"><span class="tp">├── </span>ia/</a><a class="tl sub" href="#ml"><span class="tp">│   ├── </span>machine-learning</a><a class="tl sub" href="#charte"><span class="tp">│   ├── </span>charte-solagro</a><a class="tl sub" href="#agents"><span class="tp">│   └── </span>agents</a><a class="tl " href="#territoire"><span class="tp">├── </span>solagro-1to</a><a class="tl " href="#parcours"><span class="tp">├── </span>parcours</a><a class="tl " href="#benevolat"><span class="tp">├── </span>benevolat</a><a class="tl " href="#contact"><span class="tp">└── </span>contact</a></nav><nav id="mnav" aria-label="Sommaire"><a href="#qui">./qui</a><a href="#projets">./projets</a><a href="#ia">./ia</a><a href="#territoire">./solagro</a><a href="#parcours">./parcours</a><a href="#contact">./contact</a></nav>
 <div class="wrap" id="content" style="max-width:1060px;margin:0 auto;padding:56px clamp(14px,3vw,32px) 120px;font-size:15px;line-height:1.65">
-
-<section class="blk on" data-blk="0" style="--n:0">
+<section id="accueil" class="blk on" data-blk="0" style="--n:0">
 <pre style="color:#4BE37A;font-size:clamp(7px,1.25vw,13px);line-height:1.15;font-weight:600"> ____      ___     _______ _        ___  ____  
 |  _ \    / \ \   / / ____| |      / _ \/ ___| 
 | |_) |  / _ \ \ / /|  _| | |     | | | \___ \ 
 |  _ &lt;  / ___ \ V / | |___| |___  | |_| |___) |
 |_| \_\/_/   \_\_/  |_____|_____|  \___/|____/ </pre>
 <p style="margin:22px 0 6px;color:#D8FFE6">Bienvenue sur Ravel OS 1.0, le système d'exploitation personnel d'Arthur Ravel.</p>
-<p style="margin:0;color:#6FBF8C">Faites défiler pour exécuter la suite, ou tapez <span style="color:#F4C430">help</span> tout en bas.</p>
+<p style="margin:0;color:#6FBF8C">Faites défiler pour exécuter la suite, cliquez sur un dossier du sommaire, ou tapez <span style="color:#F4C430">help</span> tout en bas.</p>
 </section>
 
-<section class="blk" data-blk="1" style="--n:6">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">whoami</span></div>
+<section id="qui" class="blk" data-blk="1" style="--n:6">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">whoami</span><span class="cm">  # qui suis-je</span></div>
 <div class="out" style="font-size:clamp(28px,5vw,56px);line-height:1.05;color:#EFFFF4;font-weight:600"><span class="gl">Arthur Ravel</span><span style="display:block;font-size:clamp(15px,1.6vw,19px);color:#9FFFC0;font-weight:400;margin-top:10px">développeur data et IA, Toulouse</span></div>
 </section>
 
-<section class="blk" data-blk="2" style="--n:8">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">neofetch</span></div>
+<section id="resume" class="blk" data-blk="2" style="--n:8">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">neofetch</span><span class="cm">  # en bref</span></div>
 <div class="out" style="display:flex;flex-wrap:wrap;gap:20px 48px;align-items:flex-start">
 <div style="min-width:0">
 <div><span style="color:#F4C430;font-weight:600">visiteur</span>@<span style="color:#F4C430;font-weight:600">ravel-os</span></div>
@@ -86,41 +107,75 @@ pre{margin:0;font:inherit;white-space:pre;overflow-x:auto}
 </div>
 </section>
 
-<section class="blk" data-blk="3" style="--n:16">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cat a-propos.txt</span></div>
+<section id="apropos" class="blk" data-blk="3" style="--n:16">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cat a-propos.txt</span><span class="cm">  # à propos</span></div>
 <div class="out" style="max-width:68ch;color:#D8FFE6">
 <p style="margin:0 0 14px">J'aime la donnée quand elle sert à quelque chose : l'agriculture durable, l'environnement, des outils qu'on utilise vraiment. Le jour, j'administre une grosse base géographique chez Solagro. Le soir, je construis des outils et je fais travailler des agents.</p>
 <p style="margin:0">Je crois à une IA sobre et mesurée, à des bases rapides et fiables, et aux logiciels qui tournent chez vous plutôt que dans le cloud de quelqu'un d'autre. En dehors du code : beaucoup de cinéma, et le scoutisme : chef scout aux Scouts et Guides de France, où j'ai appris à mener une équipe.</p>
 </div>
 </section>
 
-<section class="blk" data-blk="4" style="--n:16">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">ls -la ~/projets</span></div>
-<pre class="out nr st" style="line-height:1.7"><span style="display:block">total 5</span><span class="hl" style="display:block">drwxr-xr-x  arthur  hermes   <span style="color:#6FBF8C">2026</span>  <a href="#hermes" style="color:#5FD8FF;font-weight:600">hermes-kitchen-companion/</a>      <span style="color:#6FBF8C">agent cuisine pour Discord</span></span><span class="hl" style="display:block">drwxr-xr-x  arthur  arthur   <span style="color:#6FBF8C">2026</span>  <a href="#miniwee" style="color:#5FD8FF;font-weight:600">miniwee/</a>                       <span style="color:#6FBF8C">mon équipe d&#39;agents</span></span><span class="hl" style="display:block">drwxr-xr-x  arthur  arthur   <span style="color:#6FBF8C">2026</span>  <a href="#omnigrimoire" style="color:#B48CFF;font-weight:600">omnigrimoire/</a>                  <span style="color:#6FBF8C">l&#39;atelier du maître du jeu</span></span><span class="hl" style="display:block">drwxr-xr-x  arthur  solagro  <span style="color:#6FBF8C">2024</span>  <a href="#territoire" style="color:#5FD8FF;font-weight:600">territoire/</a>                    <span style="color:#6FBF8C">≈ 1 To de PostGIS</span></span><span class="hl" style="display:block">drwxr-xr-x  arthur  solagro  <span style="color:#6FBF8C">2024</span>  <a href="#territoire" style="color:#5FD8FF;font-weight:600">portail-alimentation-durable/</a>  <span style="color:#6FBF8C">le volet IA</span></span></pre>
-</section>
-
-<section id="hermes" class="blk" data-blk="5" style="--n:43">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cat projets/hermes-kitchen-companion/README</span></div>
-<div class="out nr" style="display:flex;flex-wrap:wrap;gap:20px 56px">
-<div style="flex:1 1 380px;min-width:0;color:#D8FFE6">
-<p style="margin:0 0 12px;color:#F4C430;font-weight:600"># Hermes Kitchen Companion</p>
-<p style="margin:0 0 12px">Un assistant de cuisine auto-hébergé pour Hermes Agent et Discord. Une seule commande crée tout le serveur de la maison. Le jeton du bot n'est jamais écrit sur le disque, et le mode <span style="color:#F4C430">--dry-run</span> montre ce qui sera créé sans rien envoyer.</p>
-<p style="margin:0"><a href="https://github.com/ArthurRavel/hermes-kitchen-companion">github.com/ArthurRavel/hermes-kitchen-companion</a></p>
-</div>
-<pre class="st" style="color:#9FFFC0"><span style="display:block">Chez Dobby/</span><span style="display:block">├── discussion</span><span style="display:block">├── idées-repas</span><span style="display:block">├── reels</span><span style="display:block">├── carnet      <span style="color:#6FBF8C">(forum de recettes)</span></span><span style="display:block">└── courses</span><span style="display:block"> </span><span style="display:block"><span style="color:#F4C430">Dobby</span> <span style="color:#6FBF8C">écrit<span class="dots"></span></span></span></pre>
-</div>
+<section id="projets" class="blk" data-blk="4" style="--n:13">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">ls ~/projets/</span><span class="cm">  # mes projets : cliquez pour ouvrir la fiche</span></div>
+<div class="out nr"><div class="st grid">
+<button type="button" class="card" data-open="miniwee" aria-label="Ouvrir la fiche Mini Wee">
+<img class="duo" src="img/miniwee/code-plan.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block">
+<span class="cdir">drwxr-xr-x  2026  <span style="color:#F4C430">miniwee/</span></span>
+<span class="ctit">Mini Wee</span>
+<span class="cacc">Une équipe d'agents IA qui pose des questions, se partage le travail et garde une mémoire commune.</span>
+<span class="ctags"><span class="tag">Python</span> <span class="tag">FastAPI</span> <span class="tag">Claude Agent SDK</span> <span class="tag">Codex</span></span>
+<span class="cgo">ouvrir la fiche <span aria-hidden="true">↵</span></span>
+</button><button type="button" class="card" data-open="omnigrimoire" aria-label="Ouvrir la fiche Omnigrimoire">
+<img class="duo" src="img/omnigrimoire/accueil-arch.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block">
+<span class="cdir">drwxr-xr-x  2026  <span style="color:#B48CFF">omnigrimoire/</span></span>
+<span class="ctit">Omnigrimoire</span>
+<span class="cacc">L'atelier complet du maître du jeu de rôle, avec mon propre système de jeu et un assistant IA.</span>
+<span class="ctags"><span class="tag">Django REST</span> <span class="tag">React</span> <span class="tag">PostgreSQL</span> <span class="tag">RAG</span></span>
+<span class="cgo">ouvrir la fiche <span aria-hidden="true">↵</span></span>
+</button><button type="button" class="card" data-open="hermes" aria-label="Ouvrir la fiche Hermes Kitchen Companion">
+<pre aria-hidden="true" style="aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1px solid #145A2E;color:#4BE37A;line-height:1.2;overflow:hidden">  _______
+ /       \
+|  (@)    |
+|    ~~   |
+ \_______/
+   |   |</pre>
+<span class="cdir">drwxr-xr-x  2026  <span style="color:#4BE37A">hermes-kitchen-companion/</span></span>
+<span class="ctit">Hermes Kitchen Companion</span>
+<span class="cacc">Un assistant de cuisine auto-hébergé, qui vit sur le Discord de la maison.</span>
+<span class="ctags"><span class="tag">Python</span> <span class="tag">Hermes Agent</span> <span class="tag">Discord</span> <span class="tag">uv</span></span>
+<span class="cgo">ouvrir la fiche <span aria-hidden="true">↵</span></span>
+</button><button type="button" class="card" data-open="territoire" aria-label="Ouvrir la fiche Base géographique de Solagro">
+<pre aria-hidden="true" style="aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1px solid #145A2E;color:#5FD8FF;line-height:1.2;overflow:hidden">    #.......#
+  #...........:#
+ #......@.....:#
+  #.....:::..##
+    ####...##</pre>
+<span class="cdir">drwxr-xr-x  2024  <span style="color:#5FD8FF">territoire/</span></span>
+<span class="ctit">Base géographique de Solagro</span>
+<span class="cacc">Environ un téraoctet d'open data géographique, structuré pour la transition agricole et alimentaire.</span>
+<span class="ctags"><span class="tag">PostgreSQL</span> <span class="tag">PostGIS</span> <span class="tag">Python</span> <span class="tag">SQL</span></span>
+<span class="cgo">ouvrir la fiche <span aria-hidden="true">↵</span></span>
+</button><button type="button" class="card" data-open="ml" aria-label="Ouvrir la fiche Profils épidémiques par département">
+<img class="duo" src="img/ml/partie2b-clustering-pca-13.jpg" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block">
+<span class="cdir">drwxr-xr-x  2026  <span style="color:#FF5FA2">machine-learning/</span></span>
+<span class="ctit">Profils épidémiques par département</span>
+<span class="cacc">Clustering et classification sur les données COVID-19 en France, avec chaque choix justifié.</span>
+<span class="ctags"><span class="tag">scikit-learn</span> <span class="tag">Pandas</span> <span class="tag">NumPy</span> <span class="tag">K-Means</span></span>
+<span class="cgo">ouvrir la fiche <span aria-hidden="true">↵</span></span>
+</button>
+</div></div>
 </section>
 
 <section id="ia" class="blk" data-blk="12" style="--n:13">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cd ~/ia && ls</span></div>
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cd ~/ia && ls</span><span class="cm">  # l'IA dans mon travail</span></div>
 <div class="out">
 <p style="margin:0 0 14px;font-size:clamp(22px,3vw,34px);line-height:1.15;color:#EFFFF4;font-weight:600">L'IA, je la fais, je l'encadre,<br>et je travaille avec elle tous les jours.<span class="cur" style="margin-left:8px"></span></p>
 <pre style="color:#5FD8FF;line-height:1.7">machine-learning/   charte-ia-solagro.md   miniwee/   agents.conf</pre>
 </div>
 </section>
 
-<section class="blk" data-blk="13" style="--n:37">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">python entrainer.py --projet covid-19</span></div>
+<section id="ml" class="blk" data-blk="13" style="--n:37">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">python entrainer.py --projet covid-19</span><span class="cm">  # machine learning</span></div>
 <div class="out nr">
 <pre class="st" style="line-height:1.75"><span style="display:block"><span style="color:#6FBF8C">chargement    </span><span style="color:#9FFFC0"><span class="bar" style="--w:9ch"></span></span>  101 départements, 7 indicateurs de santé</span><span style="display:block"><span style="color:#6FBF8C">lissage       </span><span style="color:#9FFFC0"><span class="bar" style="--w:9ch"></span></span>  moyenne glissante sur 7 jours</span><span style="display:block"><span style="color:#6FBF8C">normalisation </span><span style="color:#9FFFC0"><span class="bar" style="--w:9ch"></span></span>  RobustScaler, insensible aux pics</span><span style="display:block"><span style="color:#6FBF8C">non supervisé </span><span style="color:#5FD8FF"><span class="bar" style="--w:9ch"></span></span>  ACP, K-Means, clustering hiérarchique</span><span style="display:block"><span style="color:#6FBF8C">supervisé     </span><span style="color:#F4C430"><span class="bar" style="--w:9ch"></span></span>  régression logistique, KNN</span><span style="display:block"><span style="color:#6FBF8C">              </span><span style="color:#F4C430"><span class="bar" style="--w:9ch"></span></span>  random forest, gradient boosting</span><span style="display:block"><span style="color:#6FBF8C">validation    </span><span style="color:#4BE37A"><span class="bar" style="--w:9ch"></span></span>  croisée, 5 plis stratifiés</span></pre>
 <div style="display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-start;margin-top:26px">
@@ -136,16 +191,16 @@ pre{margin:0;font:inherit;white-space:pre;overflow-x:auto}
      <span class="flow" style="--d:0.9s;color:#F4C430">x</span>    <span class="flow" style="--d:0.9s;color:#F4C430">x</span>               <span class="flow" style="--d:1.35s;color:#B48CFF">*</span> <span class="flow" style="--d:1.35s;color:#B48CFF">*</span>     </pre><div style="color:#6FBF8C;font-size:13px;margin-top:6px">4 profils de départements, trouvés sans étiquette</div></div>
 <div style="flex:1 1 360px;min-width:0;color:#D8FFE6">
 <p style="margin:0 0 12px;color:#F4C430;font-weight:600"># Machine learning</p>
-<p style="margin:0 0 12px">Une carte interactive des profils épidémiques par département : sept indicateurs ramenés à la population, lissés sur une semaine pour gommer les week-ends, puis regroupés par K-Means après une ACP.</p>
+<p style="margin:0 0 12px">Une carte interactive des profils épidémiques par département : sept indicateurs ramenés à la population, lissés sur une semaine pour gommer les week-ends, puis regroupés par K-Means. Quatre pistes de prétraitement comparées avant de choisir.</p>
 <p style="margin:0 0 12px">Sur les mêmes données de santé, quatre classifieurs comparés pour prédire la sévérité, validés en croisé sur cinq plis, et un diagnostic du surapprentissage du random forest.</p>
-<p style="margin:0;color:#9FFFC0">Python, Pandas, NumPy, scikit-learn, Folium [à confirmer]</p>
+<p style="margin:0 0 14px;color:#9FFFC0">Python, Pandas, NumPy, scikit-learn, Matplotlib</p><button type="button" class="open" data-open="ml">ouvrir la fiche complète, avec les graphiques</button>
 </div>
 </div>
 </div>
 </section>
 
-<section class="blk" data-blk="14" style="--n:24">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">cat charte-ia-solagro.md</span></div>
+<section id="charte" class="blk" data-blk="14" style="--n:24">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">cat charte-ia-solagro.md</span><span class="cm">  # encadrer l'IA chez Solagro</span></div>
 <div class="out nr" style="max-width:78ch">
 <div style="border:1px solid #2C8A4E;padding:22px 24px;color:#D8FFE6">
 <p style="margin:0 0 4px;color:#EFFFF4;font-weight:600"># Charte d'utilisation de « l'intelligence » artificielle</p>
@@ -157,70 +212,16 @@ pre{margin:0;font:inherit;white-space:pre;overflow-x:auto}
 </div>
 </section>
 
-<section id="miniwee" class="blk" data-blk="15" style="--n:16">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">miniwee --status</span></div>
-<div class="out" style="display:flex;flex-wrap:wrap;gap:24px 56px;align-items:center">
-<pre style="color:#9FFFC0;line-height:1.35"> vous <span class="flow" style="--d:0s">──▶</span>  <span style="color:#F4C430">chef wee</span> <span class="cat" style="color:#F4C430"></span>   <span class="flow" style="--d:0.3s">──▶</span> deleguer(agent, mission)
-                │
-     ┌──────────┼───────────┐
-     <span class="flow" style="--d:0.6s">▼</span>          <span class="flow" style="--d:0.8s">▼</span>           <span class="flow" style="--d:1s">▼</span>
- explorateur développeur  relecteur
-  <span class="cat" style="color:#5FD8FF"></span>      <span class="cat" style="color:#FF5FA2"></span>      <span class="cat" style="color:#B48CFF"></span>
-  <span style="color:#6FBF8C">Claude      Codex        Ollama</span>
-     └──────────┼───────────┘
-                <span class="flow" style="--d:1.3s">▼</span>
- <span style="color:#9FFFC0">mémoire en graphe markdown (Obsidian)</span>
- <span class="pulse" style="color:#4BE37A">●</span> miniwee : <span class="spin" style="color:#F4C430"></span> au travail</pre>
-<div style="flex:1 1 360px;min-width:0;color:#D8FFE6">
-<p style="margin:0 0 12px;color:#F4C430;font-weight:600"># Mini Wee</p>
-<p style="margin:0 0 12px">Mon harness d'agents : une app locale où une équipe de « wee » spécialisés (Claude, Codex ou Ollama) se partage le travail. Un chef découpe, délègue des missions, et chaque wee rend un rapport. Tous partagent une mémoire en notes markdown reliées, lisible dans Obsidian.</p>
-<p style="margin:0 0 12px">Six modes, chacun avec ses outils et son ambiance : Code, Projet, Recherche, Data, Amélioration continue, et Cheat, qui chasse des idées d'apps qui ont un marché. Beaucoup de questions avant d'agir, des permissions explicites, rien d'écrasé sans accord.</p>
-<p style="margin:0;color:#9FFFC0">Python, FastAPI, WebSocket, Claude Agent SDK, DuckDB, JS natif sans build. Chaque wee est un petit chat pixel.</p>
-</div>
-</div>
-</section>
-
-<section class="blk" data-blk="16" style="--n:4">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">htop</span></div>
+<section id="agents" class="blk" data-blk="16" style="--n:4">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~/ia</span>$ <span class="cmd">htop</span><span class="cm">  # mes agents au quotidien</span></div>
 <div class="out nr">
 <pre class="st" style="line-height:1.75;color:#9FFFC0"><span style="display:block"><span style="background:#4BE37A;color:#03140A;font-weight:600">  PID  AGENT          ACTIVITÉ               CE QUE JE LUI CONFIE            </span></span><span class="hl" style="display:block">  101  <span style="color:#EFFFF4">claude-code  </span>  <span style="color:#4BE37A">[<span style="display:inline-block;width:20ch"><span class="bar lv" style="--w:18ch"></span></span>]</span>  code, refontes, maquettes</span><span class="hl" style="display:block">  102  <span style="color:#EFFFF4">codex        </span>  <span style="color:#5FD8FF">[<span style="display:inline-block;width:20ch"><span class="bar lv" style="--w:13ch"></span></span>]</span>  revues, tâches en parallèle</span><span class="hl" style="display:block">  103  <span style="color:#EFFFF4">hermes       </span>  <span style="color:#F4C430">[<span style="display:inline-block;width:20ch"><span class="bar lv" style="--w:10ch"></span></span>]</span>  agent du quotidien, la cuisine</span><span class="hl" style="display:block">  104  <span style="color:#EFFFF4">miniwee      </span>  <span style="color:#B48CFF">[<span style="display:inline-block;width:20ch"><span class="bar lv" style="--w:15ch"></span></span>]</span>  une équipe entière d&#39;agents</span><span style="display:block"><span style="color:#2C8A4E">  Tâches : 4 agents, <span class="spin"></span> en cours. Rewindary et Abo Killer : écrits en course publique par Claude Code et Codex.</span></span></pre>
 <p style="margin:14px 0 0;max-width:68ch;color:#D8FFE6">Je travaille au quotidien avec des agents de code : je cadre, je découpe, je relis et je tranche. Le métier change, autant apprendre à le faire bien.</p>
 </div>
 </section>
 
-<section id="omnigrimoire" class="blk" data-blk="6" style="--n:31">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">cat projets/omnigrimoire/README</span></div>
-<div class="out">
-<div style="display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-start">
-<div style="flex:1 1 440px;min-width:0;color:#D8FFE6">
-<p style="margin:0 0 12px;color:#B48CFF;font-weight:600"># Omnigrimoire</p>
-<p style="margin:0 0 12px">L'atelier complet du maître du jeu de rôle : règles, personnages, monde, rencontres et suivi de combat réunis au même endroit, au lieu d'être éparpillés entre livres, fiches papier et notes.</p>
-<p style="margin:0 0 12px">Trois systèmes coexistent : D&amp;D 5e (SRD 2024), un mode narratif générique, et <span style="color:#F4C430">Archipels</span>, mon propre système de jeu sans classes, du niveau 1 au niveau 20, avec 310 fiches jouables. Le MJ invite ses joueurs par code, et le Scriptorium permet d'emballer du contenu en kits réutilisables d'une table à l'autre.</p>
-<p style="margin:0 0 12px">Un assistant IA en RAG répond sur les règles et la campagne : plus de 23 000 fragments indexés, recherche vectorielle en numpy, modèles locaux via Ollama ou distants via Groq. Le tout tourne en Docker sur un Raspberry Pi à la maison.</p>
-<p style="margin:0;color:#6FBF8C">Campagne en cours : l'Île des Contes, où les histoires ne se déroulent plus comme elles le devraient.</p>
-</div>
-<pre style="color:#B48CFF;line-height:1.25">     __________   __________
-   .'          `.'          `.
-  |  ~~~~~~~~~  |  ~~~~~~~~~  |
-  |  ~~~~~~~    |  ~~~~~~~~   |
-  |  ~~~~~~~~~  |  ~~~~~~     |
-  |  ~~~~~      |  ~~~~~~~~~  |
-  |  ~~~~~~~~   |  ~~~~~~~    |
-  |___________  |  ___________|
-              `.|.'</pre>
-</div>
-<pre style="margin-top:22px;color:#9FFFC0;line-height:1.6"><span style="color:#6FBF8C">$ cloc omnigrimoire/ --quiet</span>
-<span style="color:#EFFFF4">langage        lignes   rôle</span>
-Python         <span class="cnt" style="--to:18631"></span>   Django, Django REST Framework, RAG
-React (JSX)    <span class="cnt" style="--to:14449"></span>   interface, fiches, assistant
-tests          <span class="cnt" style="--to:70"></span>      pytest
-fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipels</pre>
-</div>
-</section>
-
-
 <section id="territoire" class="blk" data-blk="7" style="--n:63">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">psql -c "SELECT pg_size_pretty(pg_database_size('territoire'))"</span></div>
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">psql -c "SELECT pg_size_pretty(pg_database_size('territoire'))"</span><span class="cm">  # ma base de 1 To chez Solagro</span></div>
 <div class="out" style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center">
 <div style="flex:1 1 380px;min-width:0">
 <pre style="color:#EFFFF4"> pg_size_pretty
@@ -228,7 +229,7 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
  ≈ <span class="cnt" style="--to:1000"></span> Go
 (1 ligne)</pre>
 <p style="margin:18px 0 0;max-width:60ch;color:#D8FFE6">Chez Solagro, j'administre cette base PostgreSQL et PostGIS construite à partir d'open data géographique : structuration, normalisation, indexation, optimisation SQL et automatisation en Python. Je supervise aussi le volet IA du Portail de l'Alimentation Durable.</p>
-<p style="margin:10px 0 0;color:#F4C430">[Un chiffre avant/après : le temps d'une requête type]</p>
+<p style="margin:10px 0 14px;color:#F4C430">[Un chiffre avant/après : le temps d'une requête type]</p><button type="button" class="open" data-open="territoire">ouvrir la fiche</button>
 </div>
 <div style="flex:1 1 420px;min-width:0">
 <canvas id="map" role="img" aria-label="Carte de France en relief, dessinée en caractères ASCII, qui pivote lentement ; Toulouse est marquée en rose" style="width:100%;height:clamp(320px,40vw,460px);display:block"></canvas>
@@ -237,17 +238,13 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
 </div>
 </section>
 
-
-
-<section class="blk" data-blk="9" style="--n:34">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">git log --oneline --graph parcours</span></div>
+<section id="parcours" class="blk" data-blk="9" style="--n:34">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">git log --oneline --graph parcours</span><span class="cm">  # mon parcours</span></div>
 <pre class="out nr st" style="line-height:1.8"><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">a3f9c1e</span> <span style="color:#FF5FA2">(HEAD)</span> 2025  mastère Expert en IA, Ynov Toulouse, en alternance (août 2025 à oct. 2027)</span><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">7d21b08</span> 2024  administrateur de bases de données, Solagro, en alternance</span><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">4be0f3a</span> 2024  stage d'administration de bases de données, Solagro</span><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">19c6e5d</span> 2022  BUT Informatique, parcours AGED Data-IA, IUT de Toulouse (2022 à 2025)</span><span style="display:block"><span style="color:#F4C430">*</span> <span style="color:#F4C430">0000001</span> commit initial</span></pre>
 </section>
 
-
-
-<section class="blk" data-blk="10" style="--n:23">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">systemctl status scouts</span></div>
+<section id="benevolat" class="blk" data-blk="10" style="--n:23">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">systemctl status scouts</span><span class="cm">  # bénévolat</span></div>
 <pre class="out" style="line-height:1.7;white-space:pre-wrap"><span class="pulse" style="color:#4BE37A">●</span> <span style="color:#EFFFF4;font-weight:600">chef-scout.service</span>, Scouts et Guides de France
      Active : <span style="color:#F4C430">terminé</span> (sept. 2023 à oct. 2024, 1 an 2 mois)
        Unité : Enfants
@@ -258,8 +255,8 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
         Rôle : [ce que tu pilotais : équipe d'encadrants, budget, camps]</pre>
 </section>
 
-<section class="blk" data-blk="11" style="--n:7">
-<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">contact</span></div>
+<section id="contact" class="blk" data-blk="11" style="--n:7">
+<div><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$ <span class="cmd">contact</span><span class="cm">  # me contacter</span></div>
 <div class="out">
 <a href="mailto:arthurravel@orange.fr" style="display:inline-block;font-size:clamp(26px,4.6vw,52px);line-height:1.1;color:#EFFFF4;font-weight:600;margin-bottom:14px">arthurravel@orange.fr<span class="cur" style="margin-left:10px;height:.9em"></span></a>
 <div style="display:flex;flex-wrap:wrap;gap:8px 28px"><a href="https://www.linkedin.com/in/arthur-ravel/">linkedin</a><a href="https://github.com/ArthurRavel">github</a><a href="https://arthurravel.fr/ARTHUR-RAVEL-CV.pdf">cv.pdf</a></div>
@@ -269,13 +266,11 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
 <section aria-label="Terminal interactif" style="border-top:1px dashed #2C8A4E;padding-top:28px">
 <div id="hist" aria-live="polite"></div>
 <label style="display:flex;align-items:center;gap:0;margin-top:6px"><span style="white-space:nowrap"><span style="color:#4BE37A">visiteur@ravel-os</span>:<span style="color:#5FD8FF">~</span>$&#160;</span><input id="cmd" aria-label="Tapez une commande, par exemple help" autocomplete="off" spellcheck="false" style="flex:1;min-width:0;background:transparent;border:none;color:#EFFFF4;font:inherit;caret-color:#4BE37A;padding:6px 0"></label>
-<p style="margin:10px 0 0;color:#2C8A4E;font-size:13px">tapez help puis Entrée</p>
+<p style="margin:10px 0 0;color:#2C8A4E;font-size:13px">tapez help puis Entrée, ou open miniwee</p>
 </section>
 </div>
-
 <div aria-hidden="true" style="position:fixed;inset:0;z-index:30;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.2) 0 1px,transparent 1px 3px)"></div>
 <div aria-hidden="true" style="position:fixed;inset:0;z-index:30;pointer-events:none;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.5) 100%)"></div>
-
 <div id="boot" style="position:fixed;inset:0;z-index:40;background:#010A05;color:#9FFFC0;font-size:14px;line-height:1.6;overflow:hidden">
 <button type="button" id="skip" style="position:absolute;z-index:2;top:16px;right:16px;min-height:44px;padding:0 16px;background:transparent;border:1px solid #2C8A4E;color:#9FFFC0;font:500 13px 'IBM Plex Mono',monospace;cursor:pointer">passer le démarrage</button>
 <div id="bootlines" style="padding:28px clamp(14px,3vw,32px)"></div>
@@ -287,21 +282,30 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
 <div style="color:#4BE37A">Connexion réussie. Bonne visite.</div>
 </div>
 </div>
-</div>
+<dialog id="fiche" aria-labelledby="fiche-titre">
+<div class="wbar"><span id="fiche-cmd">less</span><span style="display:flex;gap:6px"><button type="button" id="fprev" aria-label="Projet précédent">←</button><button type="button" id="fnext" aria-label="Projet suivant">→</button><button type="button" id="fclose">q fermer</button></span></div>
+<div id="fiche-body" class="fb"></div>
+<div id="lb" hidden><img id="lbimg" alt=""><p id="lbcap"></p><div class="lbb"><button type="button" id="lbprev" aria-label="Capture précédente">←</button><button type="button" id="lbclose">fermer</button><button type="button" id="lbnext" aria-label="Capture suivante">→</button></div></div>
+</dialog>
 <script>
 (function () {
   var $ = function (q) { return document.querySelector(q); };
+  var $$ = function (q, r) { return Array.from((r || document).querySelectorAll(q)); };
   var BOOT = [
       ['', 'RAVEL-BIOS v2.6   (c) 2026 Arthur Ravel', '#EFFFF4'], ['', 'Processeur : curiosité x8 à 3,2 GHz', ''], ['', 'Test mémoire : 32768 Mo OK', ''], ['', ' ', ''],
       ['[  OK  ] ', 'Montage de /home/visiteur', '#4BE37A'], ['[  OK  ] ', 'Démarrage de PostgreSQL 17 et PostGIS', '#4BE37A'], ['[  OK  ] ', 'Indexation du territoire (≈ 1 To)', '#4BE37A'],
       ['[  OK  ] ', 'Chargement de la carte de France', '#4BE37A'], ['[  OK  ] ', 'Réveil des agents : hermes, claude-code, codex, miniwee', '#4BE37A'],
       ['[  OK  ] ', "Ouverture de l'omnigrimoire", '#B48CFF'], ['[  OK  ] ', 'Lancement de Ravel OS', '#4BE37A']
     ];
+  var PROJETS = {"miniwee": {"nom": "Mini Wee", "dossier": "miniwee", "couleur": "#F4C430", "annee": "2026", "accroche": "Une équipe d'agents IA qui pose des questions, se partage le travail et garde une mémoire commune.", "tags": ["Python", "FastAPI", "Claude Agent SDK", "Codex", "Ollama", "Obsidian"], "vignette": "img/miniwee/code-plan.jpg", "chiffres": [["13 900", "lignes de Python"], ["40", "fichiers de tests"], ["6", "modes de travail"], ["3", "moteurs d'IA"]], "sections": [["Le problème", "<p>Un agent de code seul fait tout d'un bloc, pose peu de questions et oublie tout à la fin de la session. Je voulais l'inverse : une équipe où un chef cadre et découpe, où des spécialistes exécutent, et où ce qu'on apprend reste.</p>"], ["Ce que fait Mini Wee", "<p>Une app locale, ouverte dans le navigateur. Chaque « wee » est un agent avec un rôle (explorateur, développeur, relecteur, chercheur…), un moteur et ses outils. Le chef, à qui l'on parle, confie des missions avec <code>deleguer(agent, mission)</code> et chaque wee rend un rapport. Un chef Codex peut déléguer à un wee Claude, un chef Ollama à un wee Codex.</p><p>Tous partagent une mémoire en notes markdown reliées, lisible comme un coffre Obsidian, avec une recherche locale. Les wee proposent des notes, l'utilisateur garde le dernier mot.</p>"], ["Six modes", "<pre>Code                   travailler dans un dépôt, avec plus de questions\nProjet                 un chef de projet avance entre des jalons validés\nRecherche              chercheurs en parallèle, sources vérifiées\nData                   profilage et SQL (DuckDB, PostgreSQL, SQLite)\nAmélioration continue  cycles d'audit et de correction\nCheat                  chasser des idées d'apps qui ont un marché</pre>"], ["Les garde-fous", "<p>Beaucoup de questions avant d'agir, réglables par mode. Toute écriture hors mémoire passe par une permission explicite. Les commits sur une branche protégée sont refusés, et un wee peut travailler dans sa propre copie git avant fusion. L'abonnement Claude de l'utilisateur est utilisé tel quel, sans clé API.</p>"], ["Architecture", "<pre> navigateur (JS natif, sans build)\n      │  WebSocket\n      ▼\n FastAPI ── SessionAgent ── Claude Agent SDK\n      │           │\n      │           ├── deleguer ──▶ wee Claude / Codex / Ollama\n      │           └── outils MCP par mode\n      ▼\n mémoire markdown (Obsidian), modes en YAML</pre>"]], "captures": [["img/miniwee/accueil.jpg", "Le démarrage : on dit ce qu'on veut faire, Mini Wee choisit le mode."], ["img/miniwee/code-plan.jpg", "Une session en mode Code : questions de cadrage, mission de l'explorateur, plan à valider."], ["img/miniwee/equipe.jpg", "L'équipe : un chef et ses wee, chacun avec son rôle et son moteur."], ["img/miniwee/graphe-memoire.jpg", "La mémoire partagée, sous forme de graphe de notes."], ["img/miniwee/mode-recherche.jpg", "Le mode Recherche : sources enregistrées et vérifiées."], ["img/miniwee/ambiances.jpg", "Chaque mode a son ambiance."]], "liens": [], "note": "Dépôt privé. Les captures viennent de sa documentation."}, "omnigrimoire": {"nom": "Omnigrimoire", "dossier": "omnigrimoire", "couleur": "#B48CFF", "annee": "2026", "accroche": "L'atelier complet du maître du jeu de rôle, avec mon propre système de jeu et un assistant IA.", "tags": ["Django REST", "React", "PostgreSQL", "RAG", "Ollama", "Raspberry Pi"], "vignette": "img/omnigrimoire/accueil-arch.jpg", "chiffres": [["18 600", "lignes de Python"], ["14 400", "lignes de React"], ["23 000+", "fragments indexés"], ["300+", "fiches Archipels"]], "sections": [["Le problème", "<p>Préparer et faire vivre une campagne de jeu de rôle, c'est jongler entre livres de règles, fiches papier et notes éparpillées. Omnigrimoire réunit tout : règles, personnages, monde, rencontres et suivi de combat.</p>"], ["Trois systèmes de jeu", "<p>D&amp;D 5e (règles SRD 2024), un mode narratif générique, et <strong>Archipels</strong>, mon propre système : sans classes, du niveau 1 au niveau 20, avec mana, blessures, inventaire par emplacements et un équilibrage des rencontres. Chaque table garde son système, et le MJ peut en modifier les formules.</p>"], ["Jouer ensemble", "<p>Le MJ invite ses joueurs par code. Le Scriptorium emballe du contenu (PNJ, quêtes, lieux) en kits réutilisables d'une table à l'autre. La campagne se lit comme un graphe : PNJ, lieux, quêtes et factions reliés.</p>"], ["L'assistant IA", "<p>Un RAG répond sur les règles et la campagne : plus de 23 000 fragments indexés, recherche vectorielle en NumPy, modèles locaux via Ollama ou distants via Groq. L'index tient en mémoire une seule fois par processus : le recharger à chaque requête prenait douze secondes sur le Raspberry Pi et pouvait le saturer.</p>"], ["Hébergé à la maison", "<p>Le tout tourne en Docker Compose sur un Raspberry Pi, déployé par script.</p>"]], "captures": [["img/omnigrimoire/accueil-arch.jpg", "L'accueil d'une table Archipels : carnet de bord et carte des îles."], ["img/omnigrimoire/table.jpg", "Le graphe d'une campagne : PNJ, lieux, quêtes et factions reliés."], ["img/omnigrimoire/compendium.jpg", "Le compendium Archipels : armures, sorts, objets."], ["img/omnigrimoire/fiche.jpg", "Une fiche de personnage Archipels, sans classe."], ["img/omnigrimoire/regles.jpg", "Les règles de la table, modifiables par le MJ."], ["img/omnigrimoire/monstres.jpg", "Le bestiaire D&D 5e."]], "liens": [], "note": "Dépôt privé. Captures faites sur une base de démonstration."}, "hermes": {"nom": "Hermes Kitchen Companion", "dossier": "hermes-kitchen-companion", "couleur": "#4BE37A", "annee": "2026", "accroche": "Un assistant de cuisine auto-hébergé, qui vit sur le Discord de la maison.", "tags": ["Python", "Hermes Agent", "Discord", "uv"], "vignette": null, "chiffres": [["5", "salons créés"], ["1", "commande"], ["0", "jeton écrit sur le disque"]], "sections": [["Le problème", "<p>Les idées de repas, les recettes à garder et la liste de courses vivent d'habitude dans trois applis différentes. Ici, tout se passe dans un serveur Discord familial, avec un agent qui connaît la maison.</p>"], ["Ce que ça fait", "<p>Un profil pour Hermes Agent et une petite CLI Python. Une commande crée la catégorie et ses salons, puis l'agent propose deux ou trois idées de repas, cherche dans le carnet de recettes local et tient la liste de courses partagée.</p>"], ["Sortie réelle de la CLI", "<pre><span class='p'>$ kitchen-companion discord setup --guild-id … --dry-run</span>\n{\n  \"dry_run\": true,\n  \"planned\": [\n    { \"name\": \"🍳 Chez Dobby\",     \"type\": \"category\" },\n    { \"name\": \"💬・discussion\",    \"type\": \"text\" },\n    { \"name\": \"💡・idées-repas\",   \"type\": \"text\" },\n    { \"name\": \"🎬・reels\",         \"type\": \"text\" },\n    { \"name\": \"📖・carnet\",        \"type\": \"forum\" },\n    { \"name\": \"🛒・courses\",       \"type\": \"text\" }\n  ]\n}\n<span class='p'>$ kitchen-companion shopping add \"poireaux\"</span>\n[ \"poireaux\" ]</pre>"], ["La personnalité de l'agent", "<p>Deux ou trois idées plutôt qu'un menu imposé, une alternative végétarienne quand le plat ne l'est pas, les allergies respectées, une recette enregistrée seulement si on le demande, et jamais une action annoncée sans confirmation.</p>"], ["Sécurité", "<p>Le jeton du bot est demandé dans un champ masqué : jamais en argument, jamais écrit, jamais affiché. Le mode <code>--dry-run</code> n'appelle pas le réseau. L'installation se relance sans risque et ne supprime jamais un salon qu'elle n'a pas créé.</p>"]], "captures": [], "liens": [["github.com/ArthurRavel/hermes-kitchen-companion", "https://github.com/ArthurRavel/hermes-kitchen-companion"]], "note": "[Une capture du serveur Discord rendrait cette fiche plus vivante.]"}, "territoire": {"nom": "Base géographique de Solagro", "dossier": "territoire", "couleur": "#5FD8FF", "annee": "2024", "accroche": "Environ un téraoctet d'open data géographique, structuré pour la transition agricole et alimentaire.", "tags": ["PostgreSQL", "PostGIS", "Python", "SQL"], "vignette": null, "chiffres": [["≈ 1 To", "de données"], ["2024", "début, en stage"], ["2027", "fin de l'alternance"]], "sections": [["Le contexte", "<p>Solagro est une association toulousaine qui accompagne depuis 1981 les transitions agricoles, énergétiques et alimentaires. Ses études s'appuient sur beaucoup de données géographiques publiques.</p>"], ["Mon rôle", "<p>Administrateur de bases de données, en stage puis en alternance. J'ai structuré et normalisé une base PostgreSQL et PostGIS d'environ un téraoctet construite à partir d'open data, optimisé les requêtes spatiales par l'indexation, et automatisé les imports en Python.</p>"], ["Le volet IA", "<p>Je supervise aussi le volet IA du Portail de l'Alimentation Durable, et j'ai participé à l'écriture de la charte d'utilisation de l'IA de Solagro.</p>"], ["Avant, après", "<p style='color:#F4C430'>[Un chiffre avant/après : le temps d'une requête type, le volume importé, ou le nombre de jeux de données]</p>"]], "captures": [], "liens": [["Charte IA de Solagro (PDF)", "https://solagro.org/images/imagesCK/files/documents/Charte_utilisation_IA_Solagro.pdf"]], "note": "Projet professionnel : pas de capture des données internes."}, "ml": {"nom": "Profils épidémiques par département", "dossier": "machine-learning", "couleur": "#FF5FA2", "annee": "2026", "accroche": "Clustering et classification sur les données COVID-19 en France, avec chaque choix justifié.", "tags": ["scikit-learn", "Pandas", "NumPy", "K-Means", "ACP", "Jupyter"], "vignette": "img/ml/partie2b-clustering-pca-13.jpg", "chiffres": [["101", "départements"], ["7", "indicateurs"], ["4", "pistes comparées"], ["4", "classifieurs"]], "sections": [["Non supervisé : des profils de départements", "<p>Sept indicateurs (cas, décès, hospitalisations graves et critiques, positivité, tests, lits) ramenés à la population, lissés sur sept jours pour gommer l'effet des week-ends, puis normalisés avec un RobustScaler pour résister aux pics des vagues.</p>"], ["Quatre pistes comparées", "<pre>A  valeurs brutes, z-score        K-Means k=5\nB  valeurs brutes, z-score        K-Means + ACP\nC  taux / 100 000 hab., robuste   K-Means k=4    <span style='color:#4BE37A'>retenue</span>\nD  taux / 100 000 hab., robuste   K-Means + ACP k=4</pre><p>Les valeurs brutes obtiennent de meilleurs scores géométriques, mais leurs clusters séparent surtout les grands et les petits départements : un résultat trivial. L'ACP n'apportait rien de mesurable (moins de 0,002 de silhouette), car une seule valeur propre dépassait 1. J'ai donc retenu les taux, sans ACP.</p>"], ["Supervisé : savoir dire non", "<p>Sur un jeu de symptômes, quatre classifieurs (régression logistique, KNN, random forest, gradient boosting) comparés en validation croisée stratifiée sur cinq plis. Les scores restaient au niveau du hasard : le diagnostic a montré que le jeu de données, construit comme un produit cartésien de catégories, ne contenait aucun signal prédictif. Mieux vaut le prouver que forcer un score.</p>"]], "captures": [["img/ml/partie2b-clustering-pca-13.jpg", "Les quatre clusters projetés sur les deux premiers axes."], ["img/ml/projet-final-carte-14.jpg", "La part de chaque profil au fil des vagues."], ["img/ml/partie2b-clustering-pca-23.jpg", "Les profils épidémiques, date par date."], ["img/ml/comparaison-methodes-9.jpg", "Silhouette, Davies-Bouldin et Calinski-Harabasz pour les quatre pistes."], ["img/ml/supervised-21.jpg", "Choix du k du KNN en validation croisée."], ["img/ml/supervised-24.jpg", "Matrice de confusion du random forest : le diagnostic."]], "liens": [], "note": "Projet du mastère, dépôt privé."}};
+  var ORDRE = ["miniwee", "omnigrimoire", "hermes", "territoire", "ml"];
   var store = { get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
+  var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+
   class App {
     constructor() {
       this.splash = $('#splash'); this.map = $('#map'); this.content = $('#content');
-      this.timers = []; this.phase = 'boot'; this.on = {};
+      this.timers = []; this.phase = 'boot'; this.courant = null; this.cap = 0;
     }
     setPhase(p) {
       this.phase = p;
@@ -311,13 +315,13 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
       $('#login').style.display = p === 'login' ? 'block' : 'none';
       if (p === 'boot') { boot.style.display = 'block'; boot.classList.remove('bootout'); $('#bootlines').innerHTML = ''; }
       if (p === 'out') boot.classList.add('bootout');
-      if (p === 'done') { boot.style.display = 'none'; store.set('ravelos-boot', '1'); }
+      if (p === 'done') { boot.style.display = 'none'; store.set('ravelos-boot', '1'); this.routage(); }
     }
     finish() { this.timers.forEach(clearTimeout); this.setPhase('done'); }
     boot(force) {
       this.timers.forEach(clearTimeout); this.timers = [];
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce || (!force && store.get('ravelos-boot') && !/[?&]boot/.test(location.search))) { this.setPhase('done'); return; }
+      if (reduce || /#projet\//.test(location.hash) || (!force && store.get('ravelos-boot') && !/[?&]boot/.test(location.search))) { this.setPhase('done'); return; }
       this.setPhase('boot');
       var self = this, at = function (ms, fn) { self.timers.push(setTimeout(fn, ms)); };
       BOOT.forEach(function (b, i) {
@@ -332,39 +336,86 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
       at(7700, function () { self.setPhase('out'); });
       at(8300, function () { self.setPhase('done'); });
     }
+
+    /* ---------- fiches projet ---------- */
+    ouvrir(id, pousser) {
+      var p = PROJETS[id]; if (!p) return;
+      this.courant = id;
+      var d = $('#fiche');
+      $('#fiche-cmd').textContent = 'less ~/projets/' + p.dossier + '/README.md';
+      var h = '';
+      h += '<p style="color:#6FBF8C;margin:0 0 10px">drwxr-xr-x  arthur  ' + esc(p.annee) + '  <span style="color:' + p.couleur + '">' + esc(p.dossier) + '/</span></p>';
+      h += '<h2 id="fiche-titre">' + esc(p.nom) + '</h2>';
+      h += '<p style="font-size:17px;color:#EFFFF4">' + esc(p.accroche) + '</p>';
+      h += '<div class="ctags">' + p.tags.map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div>';
+      h += '<div class="kpis">' + p.chiffres.map(function (c) { return '<div class="kpi"><b>' + esc(c[0]) + '</b><span>' + esc(c[1]) + '</span></div>'; }).join('') + '</div>';
+      p.sections.forEach(function (s) { h += '<h3>' + esc(s[0]) + '</h3>' + s[1]; });
+      if (p.captures.length) {
+        h += '<h3>Captures</h3><div class="gal">' + p.captures.map(function (c, i) {
+          return '<figure><button type="button" data-cap="' + i + '" aria-label="Agrandir : ' + esc(c[1]) + '"><img class="duo" src="' + c[0] + '" alt="' + esc(c[1]) + '" loading="lazy"></button><figcaption>' + esc(c[1]) + '</figcaption></figure>';
+        }).join('') + '</div>';
+      }
+      if (p.liens.length) h += '<h3>Liens</h3><p>' + p.liens.map(function (l) { return '<a href="' + l[1] + '" target="_blank" rel="noopener">' + esc(l[0]) + '</a>'; }).join('<br>') + '</p>';
+      if (p.note) h += '<p style="color:#2C8A4E;margin-top:24px">' + esc(p.note) + '</p>';
+      var i = ORDRE.indexOf(id), suiv = PROJETS[ORDRE[(i + 1) % ORDRE.length]];
+      h += '<p style="margin-top:28px;border-top:1px dashed #145A2E;padding-top:16px"><button type="button" class="open" data-open="' + ORDRE[(i + 1) % ORDRE.length] + '">projet suivant : ' + esc(suiv.nom) + '</button></p>';
+      var b = $('#fiche-body'); b.innerHTML = h; b.scrollTop = 0;
+      Array.from(b.children).forEach(function (el, k) { el.style.setProperty('--i', Math.min(k, 24)); });
+      $$('[data-cap]', b).forEach(function (bt) { bt.addEventListener('click', function () { app.lightbox(+bt.getAttribute('data-cap')); }); });
+      $$('[data-open]', b).forEach(function (bt) { bt.addEventListener('click', function () { app.ouvrir(bt.getAttribute('data-open'), true); }); });
+      $('#lb').hidden = true;
+      if (!d.open) { this.retour = document.activeElement; d.showModal(); }
+      if (pousser !== false && location.hash !== '#projet/' + id) history.replaceState(null, '', '#projet/' + id);
+      $('#fclose').focus();
+    }
+    fermer() {
+      var d = $('#fiche'); if (d.open) d.close();
+    }
+    surFermeture() {
+      this.courant = null;
+      if (/#projet\//.test(location.hash)) history.replaceState(null, '', location.pathname + location.search + '#projets');
+      if (this.retour && this.retour.focus) this.retour.focus();
+    }
+    voisin(n) { if (!this.courant) return; var i = ORDRE.indexOf(this.courant); this.ouvrir(ORDRE[(i + n + ORDRE.length) % ORDRE.length]); }
+    lightbox(i) {
+      var caps = PROJETS[this.courant].captures; if (!caps.length) return;
+      this.cap = (i + caps.length) % caps.length;
+      $('#lbimg').src = caps[this.cap][0]; $('#lbimg').alt = caps[this.cap][1]; $('#lbcap').textContent = caps[this.cap][1] + '  (' + (this.cap + 1) + '/' + caps.length + ')';
+      $('#lb').hidden = false; $('#lbclose').focus();
+    }
+    routage() {
+      var m = location.hash.match(/^#projet\/([\w-]+)/);
+      if (m && PROJETS[m[1]]) this.ouvrir(m[1], false);
+    }
+
+    /* ---------- terminal interactif ---------- */
     print(lines) {
       var h = $('#hist');
-      lines.forEach(function (l) { var d = document.createElement('div'); d.style.whiteSpace = 'pre-wrap'; d.style.color = l.color; d.textContent = l.text; h.appendChild(d); });
+      lines.forEach(function (l) { var d = document.createElement('div'); d.style.whiteSpace = 'pre-wrap'; d.style.color = l[1] || '#D8FFE6'; d.textContent = l[0]; h.appendChild(d); });
       while (h.children.length > 40) h.removeChild(h.firstChild);
     }
     run(raw) {
-      var self = this;
-      this.setState = function (o) {
-        if (o.hist && o.hist.length === 0) $('#hist').innerHTML = '';
-        else if (o.hist) { $('#hist').innerHTML = ''; self.print(o.hist); }
-        if ('input' in o) $('#cmd').value = o.input;
-      };
-      this.state = { hist: Array.from($('#hist').children).map(function (d) { return { text: d.textContent, color: d.style.color }; }) };
-      
-    const c = raw.trim().toLowerCase(), L = (text, color) => ({ text, color: color || '#D8FFE6' });
-    let out = [];
-    if (!c) out = [];
-    else if (c === 'help') out = [L('commandes : whoami  projets  ia  omnigrimoire  miniwee  carte  scouts  contact  cv  clear  reboot', '#F4C430')];
-    else if (c === 'whoami') out = [L('Arthur Ravel, développeur data et IA à Toulouse.')];
-    else if (c === 'projets' || c === 'ls' || c.startsWith('ls ')) out = [L('hermes-kitchen-companion/  omnigrimoire/  miniwee/  territoire/  portail-alimentation-durable/', '#5FD8FF')];
-    else if (c === 'contact') out = [L('arthurravel@orange.fr  linkedin.com/in/arthur-ravel  github.com/ArthurRavel')];
-    else if (c.includes('scout')) out = [L('Chef scout aux Scouts et Guides de France : une vingtaine de jeunes à encadrer. Toujours prêt.', '#F4C430')];
-    else if (c === 'ia' || c === 'cd ia' || c === 'cd ~/ia') out = [L('machine-learning/  charte-ia-solagro.md  miniwee/  agents.conf', '#5FD8FF')];
-    else if (c.includes('miniwee')) out = [L("Mini Wee : une équipe d'agents Claude, Codex et Ollama, avec une mémoire commune dans Obsidian. =^.^=", '#F4C430')];
-    else if (c.includes('claude') || c.includes('codex')) out = [L('Mes binômes de code au quotidien. Ce site a été maquetté avec Claude.', '#5FD8FF')];
-    else if (c === 'cv') out = [L('arthurravel.fr/ARTHUR-RAVEL-CV.pdf')];
-    else if (c === 'carte' || c.includes('france')) out = [L('La carte de France tourne un peu plus haut, à côté du téraoctet.', '#5FD8FF')];
-    else if (c === 'clear') { this.setState({ hist: [], input: '' }); return; }
-    else if (c === 'reboot') { this.setState({ hist: [], input: '' }); window.scrollTo(0, 0); this.boot(true); return; }
-    else if (c.startsWith('sudo')) out = [L("visiteur n'est pas dans le fichier sudoers. Cet incident sera signalé à Arthur.", '#FF7A45')];
-    else if (c.includes('omnigrimoire')) out = [L("Omnigrimoire : l'atelier du maître du jeu, avec Archipels, mon propre système de jeu. Voir plus haut.", '#B48CFF')];
-    else out = [L('commande introuvable : ' + c + '. Tapez help.', '#FF7A45')];
-    this.setState({ hist: this.state.hist.concat([L('visiteur@ravel-os:~$ ' + raw, '#4BE37A')], out).slice(-40), input: '' });
+      var c = raw.trim().toLowerCase(), out = [], self = this;
+      $('#cmd').value = '';
+      if (!c) return;
+      this.print([['visiteur@ravel-os:~$ ' + raw, '#4BE37A']]);
+      var alias = { miniwee: 'miniwee', 'mini-wee': 'miniwee', omnigrimoire: 'omnigrimoire', hermes: 'hermes', solagro: 'territoire', territoire: 'territoire', ml: 'ml', 'machine-learning': 'ml', covid: 'ml' };
+      var cible = c.replace(/^(open|ouvrir|cat|less|cd)\s+/, '').replace(/^~?\/?(projets\/)?/, '').replace(/\/$/, '');
+      if (c === 'help' || c === 'aide') out = [['commandes : whoami  projets  open <projet>  ia  parcours  scouts  contact  cv  clear  reboot', '#F4C430'], ['projets : miniwee  omnigrimoire  hermes  solagro  ml', '#6FBF8C']];
+      else if (alias[cible]) { out = [['ouverture de la fiche ' + PROJETS[alias[cible]].nom + '…', '#5FD8FF']]; setTimeout(function () { self.ouvrir(alias[cible]); }, 250); }
+      else if (c === 'whoami') out = [['Arthur Ravel, développeur data et IA à Toulouse.']];
+      else if (c === 'projets' || c === 'ls' || c.indexOf('ls ') === 0) out = [[ORDRE.map(function (k) { return PROJETS[k].dossier + '/'; }).join('  '), '#5FD8FF'], ['tapez open <nom> pour ouvrir une fiche', '#6FBF8C']];
+      else if (c === 'ia' || c === 'cd ia') { out = [['machine-learning/  charte-solagro.md  agents/', '#5FD8FF']]; $('#ia').scrollIntoView({ behavior: 'smooth' }); }
+      else if (c === 'parcours') { out = [['git log --oneline parcours', '#6FBF8C']]; $('#parcours').scrollIntoView({ behavior: 'smooth' }); }
+      else if (c.indexOf('scout') >= 0) out = [['Chef scout aux Scouts et Guides de France : une vingtaine de jeunes à encadrer. Toujours prêt.', '#F4C430']];
+      else if (c === 'contact') out = [['arthurravel@orange.fr  linkedin.com/in/arthur-ravel  github.com/ArthurRavel']];
+      else if (c === 'cv') out = [['arthurravel.fr/ARTHUR-RAVEL-CV.pdf']];
+      else if (c.indexOf('claude') >= 0 || c.indexOf('codex') >= 0) out = [['Mes binômes de code au quotidien. Ce site a été conçu avec Claude.', '#5FD8FF']];
+      else if (c === 'clear') { $('#hist').innerHTML = ''; return; }
+      else if (c === 'reboot') { $('#hist').innerHTML = ''; window.scrollTo(0, 0); this.boot(true); return; }
+      else if (c.indexOf('sudo') === 0) out = [["visiteur n'est pas dans le fichier sudoers. Cet incident sera signalé à Arthur.", '#FF7A45']];
+      else out = [['commande introuvable : ' + c + '. Tapez help.', '#FF7A45']];
+      this.print(out);
     }
   drawSplash(t) {
     const cv = this.splash; if (!cv) return;
@@ -438,6 +489,7 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
     ctx.font = '600 13px "IBM Plex Mono", monospace'; ctx.fillStyle = '#FFB3CF'; ctx.fillText('Toulouse, Solagro', lx + 12, ly - 6);
   }
 
+
     start() {
       var self = this;
       var fmt = function () { var d = new Date(); return d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' }) + ' ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }); };
@@ -445,25 +497,65 @@ fiches         <span class="cnt" style="--to:310"></span>     catalogue Archipel
       window.addEventListener('pointermove', function (e) { self.mx = e.clientX / window.innerWidth - 0.5; self.my = e.clientY / window.innerHeight - 0.5; });
       $('#skip').addEventListener('click', function () { self.finish(); });
       $('#cmd').addEventListener('keydown', function (e) { if (e.key === 'Enter') self.run($('#cmd').value); });
+      document.addEventListener('click', function (e) {
+        var o = e.target.closest('[data-open]');
+        if (o && !$('#fiche').contains(o)) { e.preventDefault(); self.ouvrir(o.getAttribute('data-open')); }
+        var a = e.target.closest('a[href^="#"]');
+        if (a && a.getAttribute('href').length > 1 && !/^#projet\//.test(a.getAttribute('href'))) {
+          var cible = document.getElementById(a.getAttribute('href').slice(1));
+          if (cible) {
+            e.preventDefault(); cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', a.getAttribute('href'));
+            cible.classList.add('on'); cible.classList.remove('run'); void cible.offsetWidth; cible.classList.add('run');
+          }
+        }
+      });
+      var d = $('#fiche');
+      var fermerLb = function () { $('#lb').hidden = true; var t = $('#fiche-body [data-cap="' + self.cap + '"]'); if (t) t.focus(); };
+      d.addEventListener('close', function () { self.surFermeture(); });
+      d.addEventListener('cancel', function (e) { if (!$('#lb').hidden) { e.preventDefault(); fermerLb(); } });
+      d.addEventListener('click', function (e) { if (e.target === d) self.fermer(); });
+      document.addEventListener('keydown', function (e) {
+        if (!d.open || e.target.tagName === 'INPUT') return;
+        var lb = !$('#lb').hidden;
+        if (e.key === 'ArrowRight') { e.preventDefault(); lb ? self.lightbox(self.cap + 1) : self.voisin(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); lb ? self.lightbox(self.cap - 1) : self.voisin(-1); }
+        if (e.key === 'q' && !lb) self.fermer();
+      });
+      $('#fclose').addEventListener('click', function () { self.fermer(); });
+      $('#fprev').addEventListener('click', function () { self.voisin(-1); });
+      $('#fnext').addEventListener('click', function () { self.voisin(1); });
+      $('#lbclose').addEventListener('click', fermerLb);
+      $('#lbprev').addEventListener('click', function () { self.lightbox(self.cap - 1); });
+      $('#lbnext').addEventListener('click', function () { self.lightbox(self.cap + 1); });
+      $('#lb').addEventListener('click', function (e) { if (e.target.id === 'lb') fermerLb(); });
+      window.addEventListener('hashchange', function () { self.routage(); });
       this.boot(false);
       var t0 = performance.now(), fr = 0;
-      var blocks = Array.from(this.content.querySelectorAll('[data-blk]'));
+      var blocks = $$('[data-blk]', this.content);
+      var liens = $$('#tree a.tl');
       var loop = function (now) {
         requestAnimationFrame(loop); fr++;
         var t = (now - t0) / 1000;
         if (self.phase === 'splash') self.drawSplash(t);
         if (self.phase === 'done' || self.phase === 'out') {
           self.drawFrance(t);
-          if (fr % 8 === 0) blocks.forEach(function (el) {
-            if (el.classList.contains('on')) return;
-            if (el.getBoundingClientRect().top < window.innerHeight * 0.85) el.classList.add('on');
-          });
+          if (fr % 8 === 0) {
+            blocks.forEach(function (el) {
+              if (el.classList.contains('on')) return;
+              if (el.getBoundingClientRect().top < window.innerHeight * 0.85) el.classList.add('on');
+            });
+            var actif = null;
+            liens.forEach(function (a) { var s = document.getElementById(a.getAttribute('href').slice(1)); if (s && s.getBoundingClientRect().top < window.innerHeight * 0.4) actif = a; });
+            liens.forEach(function (a) { a.setAttribute('aria-current', a === actif ? 'true' : 'false'); });
+          }
         }
       };
       requestAnimationFrame(loop);
     }
   }
-  new App().start();
+  var app = new App();
+  app.start();
 })();
 </script>
 </body>
